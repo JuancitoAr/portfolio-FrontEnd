@@ -56,3 +56,17 @@
     --bs-list-group-bg: transparent;
     --bs-list-group-border-width: transparent;
 }
+
+.color-titulo{
+    color: #0d94b9;
+}
+
+#nombre{
+    font-size:xx-large;
+    font-family: "Poppins", sans-serif;
+}
+
+#titulo{
+    font-size:large;
+    font-family: "Poppins", sans-serif;
+}
