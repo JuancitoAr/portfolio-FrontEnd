@@ -8,6 +8,10 @@
     font-family: "Poppins", sans-serif;
 }
 
+.color-titulo{
+    color: #0d94b9;
+}
+
 /* Estilos del Encabezado */
 .header {
     position: fixed;
@@ -15,7 +19,6 @@
     width: 100%;
     padding: 0 20px;
     z-index: 100;
-    /*background: blue; color de fondo para apreciar el cambio*/
 }
 
 .nav {
@@ -57,10 +60,7 @@
     --bs-list-group-border-width: transparent;
 }
 
-.color-titulo{
-    color: #0d94b9;
-}
-
+/* Estilos de seccion Acerca de */
 #nombre{
     font-size:xx-large;
     font-family: "Poppins", sans-serif;
@@ -69,4 +69,12 @@
 #titulo{
     font-size:large;
     font-family: "Poppins", sans-serif;
+}
+
+.acerca {
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: translate(0%, -20%); /* el primer digito sirve para el desplazamiento horizontal y el segundo para el vertical*/
+    background-size: cover;          
 }
