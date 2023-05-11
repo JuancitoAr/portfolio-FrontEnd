@@ -30,7 +30,7 @@
                         </a>
                     </li>
                     <li class="list-group-item">
-                        <button class="button">Login</button>
+                        <button class="button" data-bs-toggle="modal" data-bs-target="#login">Login</button>
                     </li>
                     <li class="list-group-item">
                         <button class="button">Logout</button>
@@ -486,6 +486,45 @@
             </div>
         </div>
     </section>
+
+    <!-- --------------------------------------------------------------------------------------------------------- -->
+   
+    <!-- Modal Login -->
+    <div class="modal fade" id="login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md modal-dialog-centered ">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row justify-content-end">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="row">
+                            <h2 id="titulo_modal_login" class="modal-title">Login</h2>
+                        </div>                   
+                        <div class="row">
+                            <div class="d-flex justify-content-center align-items-center">
+                                <div class="mod">
+                                    <i class="uil uil-envelope-alt email"></i>
+                                    <input id="input_modal_login_correo" type="email" placeholder="Ingrese su correo">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="d-flex justify-content-center align-items-center">
+                                <div class="mod">
+                                    <i id="icono" class="uil uil-lock password"></i>
+                                    <input id="input_modal_login_contraseña" type="password" placeholder="Ingrese su contraseña">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <button class="boton-modal-ingresar">Ingresar</button>
+                        </div>
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </div>
 
 
       <!-- JS Bootstrap mediante CDN -->

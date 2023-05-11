@@ -78,3 +78,27 @@
     transform: translate(0%, -20%); /* el primer digito sirve para el desplazamiento horizontal y el segundo para el vertical*/
     background-size: cover;          
 }
+
+/* Estilos de Modal Login */
+#titulo_modal_login{
+    text-align: center;
+    font-size: 30px;
+    font-family: "Poppins";
+    padding: 20px 0px;
+}
+
+#input_modal_login_correo{
+    border: none;    
+}
+
+#input_modal_login_contraseña{    
+    border: none;
+}
+
+.mod{
+    margin: 30px;
+}
+
+.boton-modal-ingresar{
+    border-radius: 6px;
+}
