@@ -48,7 +48,7 @@
 /* Estilo Banner */
 .banner{
     position: relative;
-    background-image: url("/FrontEndEstatico/assets/Background.jpg");
+    background-image: url("../assets/imagenes/Background.jpg");
     height: 60vh;
     width: 100%;
     background-size: cover;
