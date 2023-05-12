@@ -509,6 +509,9 @@
             <div class="col">
                 <h1 class="color-titulo">Proyectos</h1>
             </div> 
+            <div class="col-auto">
+                <i class="uil uil-file-plus-alt" style="font-size: 2.5em; color: #0d94b9" data-bs-toggle="modal" data-bs-target="#agregarProyecto"></i>
+            </div>
         </div>
         <div class="card border-light mb-4 mt-3" style="max-width: auto;">
             <div class="card-header">
@@ -516,6 +519,10 @@
                     <div class="col">
                         <h4 class="card-title">Web del Instituto de Control de Alimentación y Bromatologia</h4>
                         <h6>Año 2011</h6>
+                    </div>
+                    <div class="col-auto">
+                        <i class="uil uil-file-edit-alt" style="font-size: 1.8em;color: #0d94b9" data-bs-toggle="modal" data-bs-target="#editarProyecto"></i>
+                        <i class="uil uil-trash-alt" style="font-size: 1.8em; color: #0d94b9" data-bs-toggle="modal" data-bs-target="#eliminarProyecto"></i>
                     </div>
                 </div>
             </div>
@@ -533,6 +540,10 @@
                     <div class="col">
                         <h4 class="card-title">Participación en proyecto SIFeGA</h4>
                         <h6>Año 2011</h6>
+                    </div>
+                    <div class="col-auto">
+                        <i class="uil uil-file-edit-alt" style="font-size: 1.8em;color: #0d94b9" data-bs-toggle="modal" data-bs-target="#editarProyecto"></i>
+                        <i class="uil uil-trash-alt" style="font-size: 1.8em; color: #0d94b9" data-bs-toggle="modal" data-bs-target="#eliminarProyecto"></i>
                     </div>
                 </div>
             </div>
@@ -553,6 +564,10 @@
                         <h4 class="card-title">Participe y gestor de un sistema de capacitación en Manipulación de Alimentos</h4>
                         <h6>Año 2015</h6>
                     </div>
+                    <div class="col-auto">
+                        <i class="uil uil-file-edit-alt" style="font-size: 1.8em;color: #0d94b9" data-bs-toggle="modal" data-bs-target="#editarProyecto"></i>
+                        <i class="uil uil-trash-alt" style="font-size: 1.8em; color: #0d94b9" data-bs-toggle="modal" data-bs-target="#eliminarProyecto"></i>
+                    </div>
                 </div>
             </div>
             <div class="card-body">
@@ -572,6 +587,10 @@
                     <div class="col">
                         <h4 class="card-title">Sistema de Generación de Volantes de Pago</h4>
                         <h6>Año 2019</h6>
+                    </div>
+                    <div class="col-auto">
+                        <i class="uil uil-file-edit-alt" style="font-size: 1.8em;color: #0d94b9" data-bs-toggle="modal" data-bs-target="#editarProyecto"></i>
+                        <i class="uil uil-trash-alt" style="font-size: 1.8em; color: #0d94b9" data-bs-toggle="modal" data-bs-target="#eliminarProyecto"></i>
                     </div>
                 </div>
             </div>
@@ -1055,6 +1074,113 @@
                         <form>
                             <div class="m-4">
                                 Estas a punto de <strong>Eliminar</strong> esta Habilidad Blanda!!! Estas Seguro?
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger">Aceptar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancerlar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!-- Modales Proyectos
+    ---------------------->
+        <!-- Modal Agregar Proyecto -->
+        <div class="modal fade" id="agregarProyecto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="modalAgregarProyecto">Nuevo Proyecto</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="m-3">
+                                <label for="tituloNuevoProyecto" class="form-label">Titulo del Proyecto</label>
+                                <input class="form-control" id="tituloNuevoProyecto" type="text" aria-label="Titulo Nuevo Proyecto">
+                            </div>
+                            <div class="m-3">
+                                <label for="nuevaFecha" class="form-label">Año de Inicio</label>
+                                <input class="form-control" id="nuevaFecha" type="text" aria-label="Año de Inicio">
+                            </div>
+                            <div class="m-3">
+                                <label for="nuevaDescripcionP" class="form-label">Descripción del Proyecto</label>
+                                <textarea class="form-control" id="nuevaDescripcionP" type="text" aria-label="Nueva Descripcion de Proyecto" rows="5"></textarea>
+                            </div>
+                            <div class="m-3">
+                                <label for="nuevoEnlace" class="form-label">Enlace</label>
+                                <input class="form-control" id="nuevoEnlace" type="text" aria-label="Enlace">
+                            </div>
+                            <div class="m-3">
+                                <label for="textoNuevoEnlace" class="form-label">Texto del Enlace</label>
+                                <input class="form-control" id="textoNuevoEnlace" type="text" aria-label="Mascara Enlace">
+                                <div class="form-text">Usaremos este texto para enmascarar el enlace</div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">Guardar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancerlar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Editar Proyecto -->
+        <div class="modal fade" id="editarProyecto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="modalEditarProyecto">Editar Proyecto</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="m-3">
+                                <label for="editarTituloProyecto" class="form-label">Titulo del Proyecto</label>
+                                <input class="form-control" id="editarTituloProyecto" type="text" aria-label="Editar Titulo Proyecto">
+                            </div>
+                            <div class="m-3">
+                                <label for="editarFecha" class="form-label">Año de Inicio</label>
+                                <input class="form-control" id="editarFecha" type="text" aria-label="Año de Inicio">
+                            </div>
+                            <div class="m-3">
+                                <label for="editarDescripcionP" class="form-label">Descripción del Proyecto</label>
+                                <textarea class="form-control" id="editarDescripcionP" type="text" aria-label="Editar Descripcion de Proyecto" rows="5"></textarea>
+                            </div>
+                            <div class="m-3">
+                                <label for="editarEnlaceP" class="form-label">Enlace</label>
+                                <input class="form-control" id="editarEnlaceP" type="text" aria-label="Enlace">
+                            </div>
+                            <div class="m-3">
+                                <label for="editarTextoEnlaceP" class="form-label">Texto del Enlace</label>
+                                <input class="form-control" id="editarTextoEnlaceP" type="text" aria-label="Mascara Enlace">
+                                <div class="form-text">Usaremos este texto para enmascarar el enlace</div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">Guardar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancerlar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Eliminar Proyecto -->
+        <div class="modal fade" id="eliminarProyecto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="modalEliminarProyecto">Eliminar este Proyecto</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="m-4">
+                                Estas a punto de <strong>Eliminar</strong> este Proyecto!!! Estas Seguro?
                             </div>
                         </form>
                     </div>
