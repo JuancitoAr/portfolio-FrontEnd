@@ -1,1 +1,109 @@
-/* You can add global styles to this file, and also import other style files */
+/* Importar fuente de Google Fonts - Poppins y Encode Sans*/
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans:wght@200;300;400;500;600;700;800&family=Poppins:wght@200;300;400;500;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+.color-titulo{
+    color: #0d94b9;
+}
+
+/* Estilos del Encabezado */
+.header {
+    position: fixed;
+    height: 80px;
+    width: 100%;
+    padding: 0 20px;
+    z-index: 100;
+}
+
+.nav {
+    max-width: 1100px;
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.button {
+    color: #D4D4D4;
+    padding: 6px 24px;
+    margin-top: 18px;
+    border: 2px solid #D4D4D4;
+    border-radius: 6px;
+    background: transparent;
+    cursor: pointer;
+}
+
+.button:active {
+    transform: scale(0.97);
+}
+
+/* Estilo Banner */
+.banner{
+    position: relative;
+    background-image: url("/FrontEndEstatico/assets/Background.jpg");
+    height: 60vh;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.nav-correccion{
+    --bs-list-group-bg: transparent;
+    --bs-list-group-border-width: transparent;
+}
+
+/* Estilos de seccion Acerca de */
+#nombre{
+    font-size:xx-large;
+    font-family: "Poppins", sans-serif;
+}
+
+#titulo{
+    font-size:large;
+    font-family: "Poppins", sans-serif;
+}
+
+.acerca {
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: translate(0%, -20%); /* el primer digito sirve para el desplazamiento horizontal y el segundo para el vertical*/
+    background-size: cover;          
+}
+
+/* Estilos de Modal Login */
+#titulo_modal_login{
+    text-align: center;
+    font-size: 30px;
+    font-family: "Poppins";
+    padding: 20px 0px;
+}
+
+#input_modal_login_correo{
+    border: none;    
+}
+
+#input_modal_login_contraseña{    
+    border: none;
+}
+
+.mod{
+    margin: 30px;
+}
+
+.boton-modal-ingresar{
+    border-radius: 6px;
+}
+
+hr{
+    border-color: #D63384;
+    border-width: 3px;
+}
