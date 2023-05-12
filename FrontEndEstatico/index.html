@@ -93,19 +93,21 @@
                             <div class="col">
                                 <h4 class="card-title">Pasantia en Planta Piloto - FIQ</h4>
                             </div>
+                            <div class="col-auto">
+                                <i class="uil uil-file-edit-alt" style="font-size: 1.8em; color: #0d94b9" data-bs-toggle="modal" data-bs-target="#editarExperiencia"></i>
+                                <i class="uil uil-trash-alt" style="font-size: 1.8em; color: #0d94b9" data-bs-toggle="modal" data-bs-target="#eliminarExperiencia"></i>
+                            </div>
                         </div>
                         <p class="card-text">
                             Durante todo el año 2009, preste servicios en la Planta Piloto de la Facultad de Ingenieria Quimica (UNL).
                             Estaba a cargo del manejo del equipo generador de agua desionizada empleada en el entorno de la facultad, sus laboratorios, 
                             el resto de los institutos y organismos que asi lo requiriesen. Ademas del manejo del equipo existente,
-                            se necesitaba diseñar, armar y automatizar un equipo nuevo de mejores prestaciones.
-                            
+                            se necesitaba diseñar, armar y automatizar un equipo nuevo de mejores prestaciones.                            
                         </p>
                     </div>
                 </div>
             </div>                
         </div>
-
         <div class="card mx-1 my-1" id="Segunda tarjeta">
             <div class="row justify-content-evenly mx-1 my-1" >
                 <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 col-xxl-2 align-self-center">
@@ -116,6 +118,10 @@
                         <div class="row">
                             <div class="col">
                                 <h4 class="card-title">Instituto de Control de Alimentación y Bromatologia (ICAB)</h4>
+                            </div>
+                            <div class="col-auto">
+                                <i class="uil uil-file-edit-alt" style="font-size: 1.8em; color: #0d94b9" data-bs-toggle="modal" data-bs-target="#editarExperiencia"></i>
+                                <i class="uil uil-trash-alt" style="font-size: 1.8em; color: #0d94b9" data-bs-toggle="modal" data-bs-target="#eliminarExperiencia"></i>
                             </div>
                         </div>
                         <p class="card-text">
@@ -622,34 +628,89 @@
         <!-- Modal Agregar Experiencia -->
         <div class="modal fade" id="agregarExperiencia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h1 class="modal-title fs-5" id="modalAgregarExperiencia">Nueva Experiencia Laboral</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="m-4">
-                            <label for="enlaceNuevaExperienciaLaboral" class="form-label">Imagen Experiencia Laboral</label>
-                            <input class="form-control" id="enlaceNuevaExperienciaLaboral" type="text" placeholder="Agrega el enlace de la imagen" aria-label="Enlace a tu nueva Foto">
-                        </div>
-                        <div class="m-4">
-                            <label for="nuevoTitulo" class="form-label">Titulo de la Experiencia Laboral</label>
-                            <input class="form-control" id="nuevoTitulo" type="text" aria-label="Titulo Experiencia Laboral">
-                        </div>
-                        <div class="m-4">
-                            <label for="nuevaDescripcionE" class="form-label">Descripción de la Experiencia Laboral</label>
-                            <textarea class="form-control" id="nuevaDescripcionE" type="text" aria-label="Nueva Descripcion de Experiencia" rows="5"></textarea>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Guardar</button>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancerlar</button>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="modalAgregarExperiencia">Nueva Experiencia Laboral</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="m-4">
+                                <label for="enlaceNuevaExperienciaLaboral" class="form-label">Imagen Experiencia Laboral</label>
+                                <input class="form-control" id="enlaceNuevaExperienciaLaboral" type="text" placeholder="Agrega el enlace de la imagen" aria-label="Enlace a tu nueva Foto">
+                            </div>
+                            <div class="m-4">
+                                <label for="nuevoTitulo" class="form-label">Titulo de la Experiencia Laboral</label>
+                                <input class="form-control" id="nuevoTitulo" type="text" aria-label="Titulo Experiencia Laboral">
+                            </div>
+                            <div class="m-4">
+                                <label for="nuevaDescripcionE" class="form-label">Descripción de la Experiencia Laboral</label>
+                                <textarea class="form-control" id="nuevaDescripcionE" type="text" aria-label="Nueva Descripcion de Experiencia" rows="5"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">Guardar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancerlar</button>
+                    </div>
                 </div>
             </div>
+        </div>
+
+        <!-- Modal Editar Experiencia -->
+        <div class="modal fade" id="editarExperiencia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="modalEditarExperiencia">Editar Experiencia Laboral</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="m-4">
+                                <label for="enlaceEditarExperienciaLaboral" class="form-label">Imagen Experiencia Laboral</label>
+                                <input class="form-control" id="enlaceEditarExperienciaLaboral" type="text" placeholder="Agrega el enlace de la imagen" aria-label="Enlace a tu nueva Foto">
+                            </div>
+                            <div class="m-4">
+                                <label for="editarTitulo" class="form-label">Titulo de la Experiencia Laboral</label>
+                                <input class="form-control" id="editarTitulo" type="text" aria-label="Titulo Experiencia Laboral">
+                            </div>
+                            <div class="m-4">
+                                <label for="editarDescripcionE" class="form-label">Descripción de la Experiencia Laboral</label>
+                                <textarea class="form-control" id="editarDescripcionE" type="text" aria-label="Editar Descripcion de Experiencia" rows="5"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">Guardar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancerlar</button>
+                    </div>
+                </div>
             </div>
-    </div>
+        </div>
+
+        <!-- Modal Eliminar Experiencia -->
+        <div class="modal fade" id="eliminarExperiencia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="modalEliminarExperiencia">Eliminar Experiencia Laboral</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="m-4">
+                                Estas a punto de <strong>Eliminar</strong> esta Experiencia Laboral!!! Estas Seguro?
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger">Aceptar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancerlar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
       <!-- JS Bootstrap mediante CDN -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
