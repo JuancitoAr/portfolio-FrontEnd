@@ -102,3 +102,8 @@
 .boton-modal-ingresar{
     border-radius: 6px;
 }
+
+hr{
+    border-color: #D63384;
+    border-width: 3px;
+}
