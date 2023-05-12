@@ -9,3 +9,35 @@
     </div>
     <app-experiencia></app-experiencia>          
 </section>
+
+<!-- Modal Agregar Experiencia -->
+<div class="modal fade" id="agregarExperiencia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalAgregarExperiencia">Nueva Experiencia Laboral</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="m-4">
+                        <label for="enlaceNuevaExperienciaLaboral" class="form-label">Imagen Experiencia Laboral</label>
+                        <input class="form-control" id="enlaceNuevaExperienciaLaboral" type="text" placeholder="Agrega el enlace de la imagen" aria-label="Enlace a tu nueva Foto">
+                    </div>
+                    <div class="m-4">
+                        <label for="nuevoTitulo" class="form-label">Titulo de la Experiencia Laboral</label>
+                        <input class="form-control" id="nuevoTitulo" type="text" aria-label="Titulo Experiencia Laboral">
+                    </div>
+                    <div class="m-4">
+                        <label for="nuevaDescripcionE" class="form-label">Descripción de la Experiencia Laboral</label>
+                        <textarea class="form-control" id="nuevaDescripcionE" type="text" aria-label="Nueva Descripcion de Experiencia" rows="5"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Guardar</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancerlar</button>
+            </div>
+        </div>
+    </div>
+</div>

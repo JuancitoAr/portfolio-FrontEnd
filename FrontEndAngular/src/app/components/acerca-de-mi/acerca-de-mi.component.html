@@ -25,3 +25,59 @@
         </div>
     </div>
 </section>
+
+<!-- Modal Perfil -->
+<div class="modal fade" id="perfil" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="modalPerfil">Editar Perfil</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="m-4">
+                    <label for="enlaceNuevaFoto" class="form-label">Enlace de tu Foto</label>
+                    <input class="form-control" id="enlaceNuevaFoto" type="text" aria-label="Enlace a tu nueva Foto">
+                </div>
+                <div class="m-4">
+                    <label for="nuevoNombre_Apellido" class="form-label">Nombre y Apellido</label>
+                    <input class="form-control" id="nuevoNombre_Apellido" type="text" aria-label="Nombre y Apellido">
+                </div>
+                <div class="m-4">
+                    <label for="nuevoTitulo" class="form-label">Titulo</label>
+                    <input class="form-control" id="nuevoTitulo" type="text" aria-label="Titulo">
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary">Guardar</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancerlar</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- Modal Acerca de Mi -->
+<div class="modal fade" id="acercaDeMi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="modalAcercaDeMi">Editar Acerca de Mi</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="m-4">
+                    <label for="nuevaDescripcionAdM" class="form-label">Editar descripción</label>
+                    <textarea class="form-control" id="nuevaDescripcionAdM" type="text" aria-label="Nueva Descripcion sobre ti" rows="5"></textarea>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary">Guardar</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancerlar</button>
+        </div>
+      </div>
+    </div>
+</div>

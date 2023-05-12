@@ -13,6 +13,8 @@ import { HabilidadesDurasComponent } from './components/skills/habilidades-duras
 import { HabilidadesBlandasComponent } from './components/skills/habilidades-blandas/habilidades-blandas.component';
 import { ProyectosComponent } from './components/proyectos/proyectos.component';
 import { ProyectoComponent } from './components/proyectos/proyecto/proyecto.component';
+import { HabilidadDuraIndividualComponent } from './components/skills/habilidades-duras/habilidad-dura-individual/habilidad-dura-individual.component';
+import { HabilidadBlandaIndividualComponent } from './components/skills/habilidades-blandas/habilidad-blanda-individual/habilidad-blanda-individual.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { ProyectoComponent } from './components/proyectos/proyecto/proyecto.comp
     HabilidadesBlandasComponent,
     ProyectosComponent,
     ProyectoComponent,
+    HabilidadDuraIndividualComponent,
+    HabilidadBlandaIndividualComponent,
   ],
   imports: [
     BrowserModule,

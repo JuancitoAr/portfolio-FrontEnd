@@ -9,3 +9,44 @@
     </div>
     <app-proyecto></app-proyecto>
 </section>
+
+<!-- Modal Agregar Proyecto -->
+<div class="modal fade" id="agregarProyecto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalAgregarProyecto">Nuevo Proyecto</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="m-3">
+                        <label for="tituloNuevoProyecto" class="form-label">Titulo del Proyecto</label>
+                        <input class="form-control" id="tituloNuevoProyecto" type="text" aria-label="Titulo Nuevo Proyecto">
+                    </div>
+                    <div class="m-3">
+                        <label for="nuevaFecha" class="form-label">Año de Inicio</label>
+                        <input class="form-control" id="nuevaFecha" type="text" aria-label="Año de Inicio">
+                    </div>
+                    <div class="m-3">
+                        <label for="nuevaDescripcionP" class="form-label">Descripción del Proyecto</label>
+                        <textarea class="form-control" id="nuevaDescripcionP" type="text" aria-label="Nueva Descripcion de Proyecto" rows="5"></textarea>
+                    </div>
+                    <div class="m-3">
+                        <label for="nuevoEnlace" class="form-label">Enlace</label>
+                        <input class="form-control" id="nuevoEnlace" type="text" aria-label="Enlace">
+                    </div>
+                    <div class="m-3">
+                        <label for="textoNuevoEnlace" class="form-label">Texto del Enlace</label>
+                        <input class="form-control" id="textoNuevoEnlace" type="text" aria-label="Mascara Enlace">
+                        <div class="form-text">Usaremos este texto para enmascarar el enlace</div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Guardar</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancerlar</button>
+            </div>
+        </div>
+    </div>
+</div>
