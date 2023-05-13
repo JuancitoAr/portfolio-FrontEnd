@@ -13,11 +13,15 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="modalAgregarHabilidaDura">Nueva Habilidad Dura</h1>
+                <h1 class="modal-title fs-5" id="modalAgregarHabilidaDura">Nueva Habilidad</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form>
+                    <div class="m-4">
+                        <label for="habilidadDura" class="form-label">Tipo de Habilidad</label>
+                        <input class="form-control" id="habilidadDura" type="text" aria-label="Habiliadad Dura" value="Habilidad Dura" disabled style="opacity: 0.8; color: #888;">
+                    </div>
                     <div class="m-4">
                         <label for="nuevaHabilidadDura" class="form-label">Habilidad</label>
                         <input class="form-control" id="nuevaHabilidadDura" type="text" placeholder="Por ejemplo: Html" aria-label="Habiliadad Dura">
