@@ -1,0 +1,51 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col">
+            <h1 class="color-titulo">Formación</h1>
+        </div>   
+        <div class="col-auto">
+            <i class="uil uil-file-plus-alt" style="font-size: 2.5em; color: #0d94b9" data-bs-toggle="modal" data-bs-target="#agregarEducacion"></i>
+        </div> 
+    </div>
+    <app-formacion></app-formacion>
+</div>
+
+<!-- Modal Agregar Educación -->
+<div class="modal fade" id="agregarEducacion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalAgregarEducacion">Nueva Formación, Educación o Certificación</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="m-4">
+                        <label for="nuevoGrado" class="form-label">Nivel - Grado - Certificacíon</label>
+                        <input class="form-control" id="nuevoGrado" type="text" placeholder="Agrega aqui el texto que engloba y oculta lo que quieres mostrar" aria-label="Grado Educativo">
+                    </div>
+                    <div class="m-4">
+                        <label for="nuevaInstitucion" class="form-label">Institución</label>
+                        <input class="form-control" id="nuevaInstitucion" type="text" aria-label="Institucion Educativa">
+                    </div>
+                    <div class="m-4">
+                        <label for="nuevoTitulo" class="form-label">Titulo</label>
+                        <input class="form-control" id="nuevoTitulo" type="text" aria-label="Titulo">
+                    </div>
+                    <div class="m-4">
+                        <label for="nuevoEstado" class="form-label">Estado</label>
+                        <input class="form-control" id="nuevoEstado" type="text" aria-label="Estado alcanzado">
+                    </div>
+                    <div class="m-4">
+                        <label for="nuevaDescripcionEducacion" class="form-label">Descripción asociada</label>
+                        <textarea class="form-control" id="nuevaDescripcionEducacion" type="text" aria-label="Nueva Descripcion de Educacion" rows="5"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Guardar</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancerlar</button>
+            </div>
+        </div>
+    </div>
+</div>
