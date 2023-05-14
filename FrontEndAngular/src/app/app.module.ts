@@ -17,6 +17,7 @@ import { HabilidadDuraIndividualComponent } from './components/skills/habilidade
 import { HabilidadBlandaIndividualComponent } from './components/skills/habilidades-blandas/habilidad-blanda-individual/habilidad-blanda-individual.component';
 import { Page404Component } from './components/page404/page404.component';
 import { PortfolioComponent } from './components/portfolio/portfolio.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { PortfolioComponent } from './components/portfolio/portfolio.component';
     HabilidadBlandaIndividualComponent,
     Page404Component,
     PortfolioComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
