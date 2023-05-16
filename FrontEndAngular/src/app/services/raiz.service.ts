@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 
 export abstract class RaizService <T> {
 
-  protected raizUrl = 'loquevengaderender';
+  protected raizUrl = 'http://localhost:3306/';
   constructor(protected http: HttpClient, protected url: string) {}
 
   getAll(): Observable<T[]> {
@@ -11,7 +11,7 @@ export abstract class RaizService <T> {
   }
 
   getById(id: number): Observable<T> {
-    return this.http.get<T>(this.raizUrl + this.url + '/id/' + id);
+        return this.http.get<T>(this.raizUrl + this.url + '/' + id);
   }
 
   create(item: T): Observable<T> {

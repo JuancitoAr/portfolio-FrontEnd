@@ -3,12 +3,12 @@
         <h1 class="mt-5 mb-5">
             Iniciar Sesión
         </h1>
-        <form [formGroup]="form">
+        <form [formGroup]="form" (ngSubmit)="onSubmit($event)">
             <div class="mb-4">
               <label for="exampleInputEmail1" class="form-label">Email</label>
-              <input type="email" formControlName="email" 
+              <input type="email" formControlName="email" id="email" 
               [ngClass]="{'is-invalid': Email?.errors && Email?.touched, 'is-valid': !Email?.errors && Email?.touched}"
-              class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              class="form-control" aria-describedby="emailHelp">
                 <div class="pt-2" *ngIf="Email?.errors && Email?.touched">
                   <p *ngIf="Email?.hasError('required')" class="text-danger">
                     El email es un campo requerido
@@ -20,9 +20,9 @@
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-              <input type="password" formControlName="password" 
+              <input type="password" formControlName="password" id="password"
               [ngClass]="{'is-invalid':Password?.errors && Password?.touched,'is-valid':!Password?.errors && Password?.touched }"
-              class="form-control" id="exampleInputPassword1">
+              class="form-control">
                 <div class="pt-2" *ngIf="Password?.errors && Password?.touched">
                   <p *ngIf="Password?.hasError('required')" class="text-danger">
                     La contraseña es requerida
