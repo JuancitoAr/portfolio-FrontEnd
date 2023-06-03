@@ -1,10 +1,10 @@
 <section class="container">
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 col-xxl-3 acerca text-center"> 
-            <img src="../assets/imagenes/Log_AP.jpg"> 
+            <img src="{{usuario?.foto}}"> 
                 <div>
-                    <h1 id="nombre">{{usuario?.nombre}} {{usuario?.apellido}} Prueba</h1>
-                    <h2 id="titulo">Full Stack Developer Jr.</h2>
+                    <h1 id="nombre">{{usuario?.nombre}} {{usuario?.apellido}}</h1>
+                    <h2 id="titulo">{{usuario?.titulo}}</h2>
                     <i class="uil uil-file-edit-alt" style="font-size: 1.8em; color: #0d94b9" data-bs-toggle="modal" data-bs-target="#perfil"></i>
                 </div> 
         </div>  
@@ -17,11 +17,7 @@
                     <i class="uil uil-file-edit-alt" style="font-size: 2.5em; color: #0d94b9" data-bs-toggle="modal" data-bs-target="#acercaDeMi"></i>
                 </div>
             </div>
-            <p>Soy un estudiante avanzado de Ingenieria Quimica. Actualmente trabajo para el Estado Provincial Entrerriano, 
-                desempeñandome como encargado y responsable del área de Informatica y Sistemas.</p>
-            <p>Soy una persona responsable y sumamente comprometida con el trabajo, apasionado por el desarrollo e implementación
-                de sistemas y herramientas que permitan facilitar y agilizar las tareas diarias como así tambien lograr un 
-                servicio más eficiente.</p>            
+            <p>{{usuario?.descripcion}}</p>        
         </div>
     </div>
 </section>
