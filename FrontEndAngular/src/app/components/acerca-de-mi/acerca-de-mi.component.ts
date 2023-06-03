@@ -11,12 +11,14 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 })
 export class AcercaDeMiComponent implements OnInit {
 
+  public logueado:boolean | undefined;
   public usuario:Usuario | undefined;
 
   constructor(private acercaDeMi: UsuarioService) { }
 
   ngOnInit(): void {
     this.getUser();
+    this.logueado = false;
   }
 
   public getUser(): void {

@@ -5,7 +5,7 @@
                 <div>
                     <h1 id="nombre">{{usuario?.nombre}} {{usuario?.apellido}}</h1>
                     <h2 id="titulo">{{usuario?.titulo}}</h2>
-                    <i class="uil uil-file-edit-alt" style="font-size: 1.8em; color: #0d94b9" data-bs-toggle="modal" data-bs-target="#perfil"></i>
+                    <i *ngIf="logueado" class="uil uil-file-edit-alt" style="font-size: 1.8em; color: #0d94b9" data-bs-toggle="modal" data-bs-target="#perfil"></i>
                 </div> 
         </div>  
         <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9 col-xl-9 col-xxl-9 pt-3"> 
@@ -13,7 +13,7 @@
                 <div class="col">
                     <h2 class="text-center color-titulo">Acerca de mi</h2>
                 </div>
-                <div class="col-auto">
+                <div class="col-auto" *ngIf="logueado">
                     <i class="uil uil-file-edit-alt" style="font-size: 2.5em; color: #0d94b9" data-bs-toggle="modal" data-bs-target="#acercaDeMi"></i>
                 </div>
             </div>
