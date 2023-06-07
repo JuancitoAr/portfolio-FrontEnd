@@ -10,10 +10,10 @@
                         <i class="uil uil-github" style="font-size: 3em; color: #D4D4D4"></i>
                     </a>
                 </li>
-                <li class="list-group-item">
+                <li *ngIf="!logueado" class="list-group-item">
                     <button class="button" routerLink="/login">Login</button>
                 </li>
-                <li class="list-group-item">
+                <li *ngIf="logueado" class="list-group-item">
                     <button class="button">Logout</button>
                 </li>
             </ul>
@@ -25,7 +25,7 @@
 </section>
 
 <!-- Modal Banner -->
-<div class="modal fade" id="banner" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div *ngIf="logueado" class="modal fade" id="banner" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">

@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  // Estos metodos se crean para obtener la info del formulario
   get Email() {
     return this.form.get('email');
   }

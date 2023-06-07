@@ -11,7 +11,7 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 })
 export class AcercaDeMiComponent implements OnInit {
 
-  public logueado:boolean | undefined;
+  logueado:boolean = false;
   public usuario:Usuario | undefined;
 
   constructor(private acercaDeMi: UsuarioService) { }
