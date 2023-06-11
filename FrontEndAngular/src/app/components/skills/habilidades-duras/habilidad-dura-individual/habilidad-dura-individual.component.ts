@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LoginUsuarioService } from 'src/app/services/loginUsuario.service';
 
 @Component({
   selector: 'app-habilidad-dura-individual',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class HabilidadDuraIndividualComponent {
 
+  logueado:boolean = false;
+
+  constructor(private loginUsaurio: LoginUsuarioService) {}
+
+  ngOnInit(): void {
+    this.logueado = this.loginUsaurio.valido;
+  }
+  
 }

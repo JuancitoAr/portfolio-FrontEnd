@@ -10,8 +10,8 @@
                         <h4 class="card-title">Pasantia en Planta Piloto - FIQ</h4>
                     </div>
                     <div class="col-auto">
-                        <i class="uil uil-file-edit-alt" style="font-size: 1.8em; color: #0d94b9" data-bs-toggle="modal" data-bs-target="#editarExperiencia"></i>
-                        <i class="uil uil-trash-alt" style="font-size: 1.8em; color: #0d94b9" data-bs-toggle="modal" data-bs-target="#eliminarExperiencia"></i>
+                        <i class="uil uil-file-edit-alt" *ngIf="logueado" style="font-size: 1.8em; color: #0d94b9" data-bs-toggle="modal" data-bs-target="#editarExperiencia"></i>
+                        <i class="uil uil-trash-alt" *ngIf="logueado" style="font-size: 1.8em; color: #0d94b9" data-bs-toggle="modal" data-bs-target="#eliminarExperiencia"></i>
                     </div>
                 </div>
                 <p class="card-text">
@@ -36,8 +36,8 @@
                         <h4 class="card-title">Instituto de Control de Alimentación y Bromatologia (ICAB)</h4>
                     </div>
                     <div class="col-auto">
-                        <i class="uil uil-file-edit-alt" style="font-size: 1.8em; color: #0d94b9" data-bs-toggle="modal" data-bs-target="#editarExperiencia"></i>
-                        <i class="uil uil-trash-alt" style="font-size: 1.8em; color: #0d94b9" data-bs-toggle="modal" data-bs-target="#eliminarExperiencia"></i>
+                        <i class="uil uil-file-edit-alt" *ngIf="logueado" style="font-size: 1.8em; color: #0d94b9" data-bs-toggle="modal" data-bs-target="#editarExperiencia"></i>
+                        <i class="uil uil-trash-alt" *ngIf="logueado" style="font-size: 1.8em; color: #0d94b9" data-bs-toggle="modal" data-bs-target="#eliminarExperiencia"></i>
                     </div>
                 </div>
                 <p class="card-text">

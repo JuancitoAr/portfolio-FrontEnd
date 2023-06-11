@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LoginUsuarioService } from 'src/app/services/loginUsuario.service';
 
 @Component({
   selector: 'app-experiencias',
@@ -6,5 +7,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./experiencias.component.css']
 })
 export class ExperienciasComponent {
+
+  logueado:boolean = false;
+
+  constructor (private loginUsaurio: LoginUsuarioService){}
+
+  ngOnInit():void{
+    this.logueado = this.loginUsaurio.valido;
+  }
+
 
 }

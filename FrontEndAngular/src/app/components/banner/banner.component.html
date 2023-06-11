@@ -11,21 +11,21 @@
                     </a>
                 </li>
                 <li *ngIf="!logueado" class="list-group-item">
-                    <button class="button" routerLink="/login">Login</button>
+                    <button class="button" (click)="loguin()">Login</button>
                 </li>
                 <li *ngIf="logueado" class="list-group-item">
-                    <button class="button">Logout</button>
+                    <button class="button" (click)="logout()">Logout</button>
                 </li>
             </ul>
         </nav>
     </header> 
-    <div class="row">
+    <div *ngIf="logueado" class="row">
         <i class="uil uil-image-edit row align-items-center justify-content-center" style="font-size: 3.6em; height: 60vh; color: #fff" data-bs-toggle="modal" data-bs-target="#banner"></i>
     </div>
 </section>
 
 <!-- Modal Banner -->
-<div *ngIf="logueado" class="modal fade" id="banner" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="banner" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
