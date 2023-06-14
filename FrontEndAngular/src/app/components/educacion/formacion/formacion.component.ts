@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { LoginUsuarioService } from 'src/app/services/loginUsuario.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { LoginUsuarioService } from 'src/app/services/loginUsuario.service';
   templateUrl: './formacion.component.html',
   styleUrls: ['./formacion.component.css']
 })
-export class FormacionComponent {
+export class FormacionComponent implements OnInit {
 
   logueado:boolean = false;
 
@@ -16,4 +16,11 @@ export class FormacionComponent {
     this.logueado = this.loginUsaurio.valido;
   }
 
+  @Input() estudio_id:string = "";
+  @Input() nivel:string = "";
+  @Input() institucion:string = "";
+  @Input() titulo:string = "";
+  @Input() estado:string = "";
+  @Input() descripcion:string = "";
+  
 }

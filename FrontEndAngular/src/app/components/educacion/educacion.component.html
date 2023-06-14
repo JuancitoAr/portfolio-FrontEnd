@@ -2,12 +2,22 @@
     <div class="row">
         <div class="col">
             <h1 class="color-titulo">Formación</h1>
-        </div>   
+        </div>
         <div *ngIf="logueado" class="col-auto">
-            <i class="uil uil-file-plus-alt" style="font-size: 2.5em; color: #0d94b9" data-bs-toggle="modal" data-bs-target="#agregarEducacion"></i>
-        </div> 
+            <i class="uil uil-file-plus-alt" style="font-size: 2.5em; color: #0d94b9" data-bs-toggle="modal"
+                data-bs-target="#agregarEducacion"></i>
+        </div>
     </div>
-    <app-formacion></app-formacion>
+    <div *ngFor="let estudio of estudios">
+        <app-formacion 
+        estudio_id="{{estudio.estudio_id}}"
+        nivel="{{estudio.nivel}}" 
+        institucion="{{estudio.institucion}}"
+        titulo="{{estudio.titulo}}" 
+        estado="{{estudio.estado}}" 
+        descripcion="{{estudio.descripcion}}"
+        ></app-formacion>
+    </div>
 </div>
 
 <!-- Modal Agregar Educación -->
@@ -22,11 +32,14 @@
                 <form>
                     <div class="m-4">
                         <label for="nuevoGrado" class="form-label">Nivel - Grado - Certificacíon</label>
-                        <input class="form-control" id="nuevoGrado" type="text" placeholder="Agrega aqui el texto que engloba y oculta lo que quieres mostrar" aria-label="Grado Educativo">
+                        <input class="form-control" id="nuevoGrado" type="text"
+                            placeholder="Agrega aqui el texto que engloba y oculta lo que quieres mostrar"
+                            aria-label="Grado Educativo">
                     </div>
                     <div class="m-4">
                         <label for="nuevaInstitucion" class="form-label">Institución</label>
-                        <input class="form-control" id="nuevaInstitucion" type="text" aria-label="Institucion Educativa">
+                        <input class="form-control" id="nuevaInstitucion" type="text"
+                            aria-label="Institucion Educativa">
                     </div>
                     <div class="m-4">
                         <label for="nuevoTitulo" class="form-label">Titulo</label>
@@ -38,7 +51,8 @@
                     </div>
                     <div class="m-4">
                         <label for="nuevaDescripcionEducacion" class="form-label">Descripción asociada</label>
-                        <textarea class="form-control" id="nuevaDescripcionEducacion" type="text" aria-label="Nueva Descripcion de Educacion" rows="5"></textarea>
+                        <textarea class="form-control" id="nuevaDescripcionEducacion" type="text"
+                            aria-label="Nueva Descripcion de Educacion" rows="5"></textarea>
                     </div>
                 </form>
             </div>

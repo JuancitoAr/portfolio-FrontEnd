@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { LoginUsuarioService } from 'src/app/services/loginUsuario.service';
+import { ExperienciaLaboralService } from 'src/app/services/experienciaLaboral.service';
+import { ExperienciaLaboral } from 'src/app/models/experienciaLaboral';
 
 @Component({
   selector: 'app-experiencias',
@@ -8,12 +10,22 @@ import { LoginUsuarioService } from 'src/app/services/loginUsuario.service';
 })
 export class ExperienciasComponent {
 
-  logueado:boolean = false;
+  public experienciasLaborales: ExperienciaLaboral[]=[];
+  logueado: boolean = false;
 
-  constructor (private loginUsaurio: LoginUsuarioService){}
+  constructor (private loginUsaurio: LoginUsuarioService, private experienciaLaboral: ExperienciaLaboralService) { }
 
-  ngOnInit():void{
+  ngOnInit(): void {
+    this.getExperienciaLaboral();
     this.logueado = this.loginUsaurio.valido;
+  }
+
+  getExperienciaLaboral(): void {
+    this.experienciaLaboral.getExperienciaLaboral().subscribe({
+      next: (Response: ExperienciaLaboral[]) => {
+        this.experienciasLaborales = Response;
+      }
+    })
   }
 
 
