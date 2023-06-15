@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { Proyecto } from 'src/app/models/proyecto';
 import { LoginUsuarioService } from 'src/app/services/loginUsuario.service';
+import { ProyectoService } from 'src/app/services/proyecto.service';
 
 @Component({
   selector: 'app-proyectos',
@@ -8,12 +10,22 @@ import { LoginUsuarioService } from 'src/app/services/loginUsuario.service';
 })
 export class ProyectosComponent {
 
-  logueado:boolean = false;
+  public proyectos: Proyecto[] = [];
+  logueado: boolean = false;
 
-  constructor (private loginUsaurio: LoginUsuarioService){}
+  constructor (private loginUsaurio: LoginUsuarioService, private proyecto: ProyectoService) { }
 
-  ngOnInit():void{
+  ngOnInit(): void {
+    this.getProyecto();
     this.logueado = this.loginUsaurio.valido;
+  }
+
+  getProyecto(): void {
+    this.proyecto.getProyecto().subscribe({
+      next: (Response: Proyecto[]) => {
+        this.proyectos = Response;
+      }
+    })
   }
 
 

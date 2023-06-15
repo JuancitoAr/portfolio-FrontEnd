@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { LoginUsuarioService } from 'src/app/services/loginUsuario.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { LoginUsuarioService } from 'src/app/services/loginUsuario.service';
   templateUrl: './proyecto.component.html',
   styleUrls: ['./proyecto.component.css']
 })
-export class ProyectoComponent {
+export class ProyectoComponent implements OnInit {
 
   logueado:boolean = false;
 
@@ -15,5 +15,11 @@ export class ProyectoComponent {
   ngOnInit(): void {
     this.logueado = this.loginUsaurio.valido;
   }
+
+  @Input() titulo:string = "";
+  @Input() fecha_inicio:string = "";
+  @Input() descripcion:string = "";
+  @Input() link:string = "";
+  @Input() mascara:string = "";
 
 }
