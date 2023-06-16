@@ -6,7 +6,13 @@
         <i class="uil uil-file-plus-alt" style="font-size: 1.8em; color: #0d94b9" data-bs-toggle="modal" data-bs-target="#agregarHabilidadDura"></i>
     </div>
 </div>
-<app-habilidad-dura-individual></app-habilidad-dura-individual>
+<div *ngFor="let skillDura of skillsDuras">
+    <app-habilidad-dura-individual
+    tipo_habilidad="{{skillDura.tipo_habilidad}}"
+    habilidad="{{skillDura.habilidad}}"
+    nivel="{{skillDura.nivel}}"
+    ></app-habilidad-dura-individual>
+</div>
 
 <!-- Modal Agregar Habilidad Dura -->
 <div class="modal fade" id="agregarHabilidadDura" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

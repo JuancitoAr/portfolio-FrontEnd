@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { LoginUsuarioService } from 'src/app/services/loginUsuario.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { LoginUsuarioService } from 'src/app/services/loginUsuario.service';
   templateUrl: './habilidad-dura-individual.component.html',
   styleUrls: ['./habilidad-dura-individual.component.css']
 })
-export class HabilidadDuraIndividualComponent {
+export class HabilidadDuraIndividualComponent implements OnInit {
 
   logueado:boolean = false;
 
@@ -16,4 +16,8 @@ export class HabilidadDuraIndividualComponent {
     this.logueado = this.loginUsaurio.valido;
   }
   
+  @Input() tipo_habilidad:string = "";
+  @Input() habilidad:string = "";
+  @Input() nivel:string ="";
+
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { LoginUsuarioService } from 'src/app/services/loginUsuario.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { LoginUsuarioService } from 'src/app/services/loginUsuario.service';
   templateUrl: './habilidad-blanda-individual.component.html',
   styleUrls: ['./habilidad-blanda-individual.component.css']
 })
-export class HabilidadBlandaIndividualComponent {
+export class HabilidadBlandaIndividualComponent implements OnInit {
 
   logueado:boolean = false;
 
@@ -15,5 +15,9 @@ export class HabilidadBlandaIndividualComponent {
   ngOnInit(): void {
     this.logueado = this.loginUsaurio.valido;
   }
+  
+  @Input() tipo_habilidad:string = "";
+  @Input() habilidad:string = "";
+  @Input() nivel:string = "";
   
 }

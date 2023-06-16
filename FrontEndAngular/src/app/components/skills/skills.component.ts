@@ -8,11 +8,11 @@ import { LoginUsuarioService } from 'src/app/services/loginUsuario.service';
 })
 export class SkillsComponent {
 
-  logueado:boolean = false;
+  logueado: boolean = false;
 
-  constructor (private loginUsaurio: LoginUsuarioService){}
+  constructor(private loginUsaurio: LoginUsuarioService) { }
 
-  ngOnInit():void{
+  ngOnInit(): void {
     this.logueado = this.loginUsaurio.valido;
   }
 
