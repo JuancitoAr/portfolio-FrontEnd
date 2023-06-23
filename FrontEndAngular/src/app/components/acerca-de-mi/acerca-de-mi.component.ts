@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Usuario } from 'src/app/models/usuario';
 import { LoginUsuarioService } from 'src/app/services/loginUsuario.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
@@ -12,8 +12,8 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 })
 export class AcercaDeMiComponent implements OnInit {
 
-  logueado:boolean = false;
-  public usuario:Usuario | undefined;
+  logueado: boolean = false;
+  public usuario: Usuario | any;
 
   constructor(private acercaDeMi: UsuarioService, private loginUsaurio: LoginUsuarioService) { }
 
@@ -24,13 +24,42 @@ export class AcercaDeMiComponent implements OnInit {
 
   public getUser(): void {
     this.acercaDeMi.getUsuario().subscribe({
-      next: (response:Usuario) => {
-        this.usuario=response;
+      next: (response: Usuario) => {
+        this.usuario = response;
       },
-      error:(error:HttpErrorResponse)=>{
+      error: (error: HttpErrorResponse) => {
         alert(error.message);
-      }      
+      }
     })
   }
 
+  onSubmitPerfil() {
+    this.usuario.foto = (document.getElementById('foto') as HTMLInputElement).value;
+    this.usuario.apellido = (document.getElementById('apellido') as HTMLInputElement).value;
+    this.usuario.nombre = (document.getElementById('nombre') as HTMLInputElement).value;
+    this.usuario.titulo = (document.getElementById('titulo') as HTMLInputElement).value;
+    this.acercaDeMi.updateUsuarioPerfil(this.usuario).subscribe({
+      next: (response: Usuario) => {
+        this.usuario = response;
+        (document.getElementById('foto') as HTMLInputElement).value = '';
+        (document.getElementById('apellido') as HTMLInputElement).value = '';
+        (document.getElementById('nombre') as HTMLInputElement).value = '';
+        (document.getElementById('titulo') as HTMLInputElement).value = '';
+      }
+    });
+    this.getUser();
+    document.getElementById('closeModalPerfil')?.click()
+  }
+
+  onSubmitAcerca() {
+    this.usuario.descripcion = (document.getElementById('descripcion') as HTMLInputElement).value;
+    this.acercaDeMi.updateUsuarioAcerca(this.usuario).subscribe({
+      next: (response: Usuario) => {
+        this.usuario = response;
+        (document.getElementById('descripcion') as HTMLInputElement).value = '';
+      }
+    });
+    this.getUser();
+    document.getElementById('closeModalAcerca')?.click();
+  }
 }

@@ -16,8 +16,17 @@ export class UsuarioService {
     return this.http.get<Usuario>(`${this.URLBackEnd}/usuario/id/1`);
   }
 
+  //este metodo sirve para editar todos los campos del usuario
   public updateUsuario(usuario: Usuario): Observable<Usuario> {
-    return this.http.put<Usuario>(`${this.URLBackEnd}/usuario/editar/`,usuario);
+    return this.http.put<Usuario>(`${this.URLBackEnd}/usuario/editar/1`,usuario);
+  }
+
+  public updateUsuarioPerfil(usuario: Usuario): Observable<Usuario> {
+    return this.http.put<Usuario>(`${this.URLBackEnd}/usuario/editarperfil/1`,usuario);
+  }
+
+  public updateUsuarioAcerca(usuario: Usuario): Observable<Usuario> {
+    return this.http.put<Usuario>(`${this.URLBackEnd}/usuario/editaracerca/1`,usuario);
   }
 
 }
