@@ -14,7 +14,8 @@
                         <i class="uil uil-trash-alt" *ngIf="logueado" style="font-size: 1.8em; color: #0d94b9" data-bs-toggle="modal" data-bs-target="#eliminarExperiencia"></i>
                     </div>
                 </div>
-                <p class="card-text">{{descripcion}}</p>
+                <p class="card-text">{{descripcion}}</p>  
+                <br><p>El id de este elemento es {{experiencia_laboral_id}} veamos si se muestra</p>          
             </div>
         </div>
     </div>                
@@ -58,17 +59,17 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="modalEliminarExperiencia">Eliminar Experiencia Laboral</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button id="closeModalDeleteExp" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form>
                     <div class="m-4">
-                        Estas a punto de <strong>Eliminar</strong> esta Experiencia Laboral!!! Estas Seguro?
+                        Estas a punto de <strong>Eliminar</strong> {{titulo}} {{experiencia_laboral_id}} de cual su id es  esta Experiencia Laboral!!! Estas Seguro?
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger">Aceptar</button>
+                <button (click)="deleteExperienciaLaboral(experiencia_laboral_id)" type="button" class="btn btn-danger">Aceptar</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancerlar</button>
             </div>
         </div>
