@@ -20,4 +20,11 @@ export class SkillService {
     return this.http.get<Skill[]>(`${this.URLBackEnd}/skill/listhblanda`);
   }
 
+  public createSkill(skill: Skill): Observable<Skill>{
+    return this.http.post<Skill>(`${this.URLBackEnd}/skill/crear`, skill)
+  }
+
+  public deleteSkill(skill_id: number): Observable<any>{
+    return this.http.delete(`${this.URLBackEnd}/skill/borrar/${skill_id}`);
+  }
 }

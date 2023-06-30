@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Skill } from 'src/app/models/skill';
 import { LoginUsuarioService } from 'src/app/services/loginUsuario.service';
 import { SkillService } from 'src/app/services/skill.service';
@@ -28,4 +29,23 @@ export class HabilidadesDurasComponent {
     })
   }
 
+  onSubmitAddSkillDura(addFormSkillDura: NgForm) {
+    if (addFormSkillDura.valid) {
+      const nuevaSillDura: Skill = {
+        "skill_id": 0, //ojo con esta linea
+        "tipo_habilidad": (document.getElementById('habilidadDura') as HTMLInputElement).value,
+        "habilidad": (document.getElementById('nuevaHabilidadDura') as HTMLInputElement).value,
+        "nivel": (document.getElementById('nivelHabilidadDura') as HTMLInputElement).value
+      };
+      this.skill.createSkill(nuevaSillDura).subscribe(
+        (response) => {
+          (document.getElementById('habilidadDura') as HTMLInputElement).value = '';
+          (document.getElementById('nuevaHabilidadDura') as HTMLInputElement).value = '';
+          (document.getElementById('nivelHabilidadDura') as HTMLInputElement).value = '';
+          this.getSkillDura();
+          document.getElementById('closeModalAddSkillDura')?.click()
+        }
+      );
+    }
+  }
 }

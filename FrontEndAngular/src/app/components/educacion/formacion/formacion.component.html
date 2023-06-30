@@ -6,7 +6,7 @@
                     <div class="col">{{nivel}}</div> 
                     <div class="col-auto pe-3">
                         <i class="uil uil-file-edit-alt" *ngIf="logueado" style="font-size: 1.8em; color: #0d94b9" data-bs-toggle="modal" data-bs-target="#editarEducacion"></i>
-                        <i class="uil uil-trash-alt" *ngIf="logueado" style="font-size: 1.8em; color: #0d94b9" data-bs-toggle="modal" data-bs-target="#eliminarEducacion"></i>
+                        <i class="uil uil-trash-alt" *ngIf="logueado" style="font-size: 1.8em; color: #0d94b9" data-bs-toggle="modal" [attr.data-bs-target]="'#eliminarEducacion' + estudio_id"></i>
                     </div>       
                 </button>
             </h2>
@@ -73,12 +73,12 @@
 </div>
 
 <!-- Modal Eliminar Educacion -->
-<div class="modal fade" id="eliminarEducacion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" [attr.id]="'eliminarEducacion' + estudio_id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="modalEliminarEducacion">Eliminar esta Educación</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button [attr.id]="'closeModalDeleteEst' + estudio_id " type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form>
@@ -88,7 +88,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger">Aceptar</button>
+                <button (click)="deleteEstudio(estudio_id)" type="button" class="btn btn-danger">Aceptar</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancerlar</button>
             </div>
         </div>

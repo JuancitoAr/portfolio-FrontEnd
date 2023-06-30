@@ -16,4 +16,11 @@ export class ProyectoService {
     return this.http.get<Proyecto[]>(`${this.URLBackEnd}/proyecto/listar`);
   }
 
+  public createProyecto(proyecto: Proyecto): Observable<Proyecto>{
+    return this.http.post<Proyecto>(`${this.URLBackEnd}/proyecto/crear`, proyecto)
+  }
+
+  public deleteProyecto(proyecto_id: number): Observable<any>{
+    return this.http.delete(`${this.URLBackEnd}/proyecto/borrar/${proyecto_id}`);
+  }
 }

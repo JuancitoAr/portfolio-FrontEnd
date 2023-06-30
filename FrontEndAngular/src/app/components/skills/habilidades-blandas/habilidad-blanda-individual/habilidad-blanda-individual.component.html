@@ -6,7 +6,7 @@
                     <div class="col">{{habilidad}}</div>
                     <div class="col-auto">
                         <i class="uil uil-file-edit-alt" *ngIf="logueado" style="font-size: 1.5em;" data-bs-toggle="modal" data-bs-target="#editarEstaHabilidad"></i>
-                        <i class="uil uil-trash-alt" *ngIf="logueado" style="font-size: 1.5em;" data-bs-toggle="modal" data-bs-target="#eliminarEstaHabilidad"></i>
+                        <i class="uil uil-trash-alt" *ngIf="logueado" style="font-size: 1.5em;" data-bs-toggle="modal" [attr.data-bs-target]="'#eliminarEstaHabilidadBlanda' + skill_id"></i>
                     </div>
                 </div>
             </div>
@@ -43,22 +43,22 @@
 </div>
 
 <!-- Modal Eliminar Habilidad -->
-<div class="modal fade" id="eliminarEstaHabilidad" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" [attr.id]="'eliminarEstaHabilidadBlanda' + skill_id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="modalEliminarHabilidad">Eliminar esta Habilidad</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button [attr.id]="'closeModalDeleteSkillBlanda' + skill_id" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form>
                     <div class="m-4">
-                        Estas a punto de <strong>Eliminar</strong> esta Habilidad!!! Estas Seguro?
+                        Estas a punto de <strong>Eliminar</strong> {{habilidad}} y toda su información!!! Estas Seguro?
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger">Aceptar</button>
+                <button (click)="deleteSkill(skill_id)" type="button" class="btn btn-danger">Aceptar</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancerlar</button>
             </div>
         </div>
