@@ -27,7 +27,7 @@ export class ExperienciaComponent implements OnInit {
   public deleteExperienciaLaboral (experiencia_laboral_id:number): void{
     this.experienciaLaboral.deleteExperienciaLaboral(experiencia_laboral_id).subscribe({
       next: () =>{
-        document.getElementById('closeModalDeleteExp')?.click()
+        document.getElementById('closeModalDeleteExp' + experiencia_laboral_id )?.click()
         this.experienciaEliminada.emit();
       }
     })

@@ -11,7 +11,7 @@
                     </div>
                     <div class="col-auto">
                         <i class="uil uil-file-edit-alt" *ngIf="logueado" style="font-size: 1.8em; color: #0d94b9" data-bs-toggle="modal" data-bs-target="#editarExperiencia"></i>
-                        <i class="uil uil-trash-alt" *ngIf="logueado" style="font-size: 1.8em; color: #0d94b9" data-bs-toggle="modal" data-bs-target="#eliminarExperiencia"></i>
+                        <i class="uil uil-trash-alt" *ngIf="logueado" style="font-size: 1.8em; color: #0d94b9" data-bs-toggle="modal" [attr.data-bs-target]="'#eliminarExperiencia' + experiencia_laboral_id "></i>
                     </div>
                 </div>
                 <p class="card-text">{{descripcion}}</p>  
@@ -54,12 +54,12 @@
 </div>
 
 <!-- Modal Eliminar Experiencia -->
-<div class="modal fade" id="eliminarExperiencia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" [attr.id]="'eliminarExperiencia' + experiencia_laboral_id " tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="modalEliminarExperiencia">Eliminar Experiencia Laboral</h1>
-                <button id="closeModalDeleteExp" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button [attr.id]="'closeModalDeleteExp' + experiencia_laboral_id " type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form>
