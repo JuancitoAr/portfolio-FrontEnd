@@ -23,4 +23,8 @@ export class ExperienciaLaboralService {
   public deleteExperienciaLaboral(experiencia_laboral_id: number): Observable<any>{
     return this.http.delete(`${this.URLBackEnd}/experiencia/borrar/${experiencia_laboral_id}`);
   }
+
+  public updateExperienciaLaboral(experiencia_laboral_id: number, experienciaLaboral: ExperienciaLaboral): Observable<ExperienciaLaboral> {
+    return this.http.put<ExperienciaLaboral>(`${this.URLBackEnd}/experiencia/editar/${experiencia_laboral_id}`,experienciaLaboral);
+  }
 }

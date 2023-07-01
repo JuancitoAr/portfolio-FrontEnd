@@ -5,7 +5,7 @@
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse' + estudio_id" aria-expanded="true" aria-controls="collapseOne">
                     <div class="col">{{nivel}}</div> 
                     <div class="col-auto pe-3">
-                        <i class="uil uil-file-edit-alt" *ngIf="logueado" style="font-size: 1.8em; color: #0d94b9" data-bs-toggle="modal" data-bs-target="#editarEducacion"></i>
+                        <i class="uil uil-file-edit-alt" *ngIf="logueado" style="font-size: 1.8em; color: #0d94b9" data-bs-toggle="modal" [attr.data-bs-target]="'#editarEducacion' + estudio_id"></i>
                         <i class="uil uil-trash-alt" *ngIf="logueado" style="font-size: 1.8em; color: #0d94b9" data-bs-toggle="modal" [attr.data-bs-target]="'#eliminarEducacion' + estudio_id"></i>
                     </div>       
                 </button>
@@ -33,39 +33,39 @@
 </div>
 
 <!-- Modal Editar Educación -->
-<div class="modal fade" id="editarEducacion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" [attr.id]="'editarEducacion' + estudio_id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="modalAgregarEducacion">Editar Formación, Educación o Certificación</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button [attr.id]="'closeModalEditEst' + estudio_id" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form>
+                <form #editFormEst="ngForm" (ngSubmit)="editEstudio(estudio_id)">
                     <div class="m-4">
                         <label for="editarGrado" class="form-label">Nivel - Grado - Certificacíon</label>
-                        <input class="form-control" id="editarGrado" type="text" placeholder="Agrega aqui el texto que engloba y oculta lo que quieres mostrar" aria-label="Grado Educativo">
+                        <input name="editarGrado" ngModel="{{nivel}}" class="form-control" id="editarGrado" type="text" placeholder="Agrega aqui el texto que engloba y oculta lo que quieres mostrar" aria-label="Grado Educativo">
                     </div>
                     <div class="m-4">
                         <label for="editarInstitucion" class="form-label">Institución</label>
-                        <input class="form-control" id="editarInstitucion" type="text" aria-label="Institucion Educativa">
+                        <input name="editarInstitucion" ngModel="{{institucion}}" class="form-control" id="editarInstitucion" type="text" aria-label="Institucion Educativa">
                     </div>
                     <div class="m-4">
                         <label for="editarTitulo" class="form-label">Titulo</label>
-                        <input class="form-control" id="editarTitulo" type="text" aria-label="Titulo">
+                        <input name="editarTitulo" ngModel="{{titulo}}" class="form-control" id="editarTitulo" type="text" aria-label="Titulo">
                     </div>
                     <div class="m-4">
                         <label for="editarEstado" class="form-label">Estado</label>
-                        <input class="form-control" id="editarEstado" type="text" aria-label="Estado alcanzado">
+                        <input name="editarEstado" ngModel="{{estado}}" class="form-control" id="editarEstado" type="text" aria-label="Estado alcanzado">
                     </div>
                     <div class="m-4">
                         <label for="editarDescripcionEducacion" class="form-label">Descripción asociada</label>
-                        <textarea class="form-control" id="editarDescripcionEducacion" type="text" aria-label="Nueva Descripcion de Educacion" rows="5"></textarea>
+                        <textarea name="editarDescripcionEducacion" ngModel="{{descripcion}}" class="form-control" id="editarDescripcionEducacion" type="text" aria-label="Nueva Descripcion de Educacion" rows="5"></textarea>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Guardar</button>
+                <button (click)="editEstudio(estudio_id)" type="submit" class="btn btn-primary">Guardar</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancerlar</button>
             </div>
         </div>
@@ -83,7 +83,7 @@
             <div class="modal-body">
                 <form>
                     <div class="m-4">
-                        Estas a punto de <strong>Eliminar</strong> este detalle en tu Educación!!! Estas Seguro?
+                        Estas a punto de <strong>Eliminar</strong> la formación que responde al titulo de {{titulo}} y toda su información!!! Estas Seguro?
                     </div>
                 </form>
             </div>

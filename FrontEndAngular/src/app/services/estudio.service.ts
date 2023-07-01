@@ -24,4 +24,7 @@ export class EstudioService {
     return this.http.delete(`${this.URLBackEnd}/estudio/borrar/${estudio_id}`);
   }
 
+  public updateEstudio(estudio_id: number, estudio: Estudio): Observable<Estudio> {
+    return this.http.put<Estudio>(`${this.URLBackEnd}/estudio/editar/${estudio_id}`,estudio);
+  }
 }

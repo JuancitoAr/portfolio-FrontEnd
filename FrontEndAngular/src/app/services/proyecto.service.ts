@@ -23,4 +23,8 @@ export class ProyectoService {
   public deleteProyecto(proyecto_id: number): Observable<any>{
     return this.http.delete(`${this.URLBackEnd}/proyecto/borrar/${proyecto_id}`);
   }
+
+  public updateProyecto(proyecto_id: number, proyecto: Proyecto): Observable<Proyecto> {
+    return this.http.put<Proyecto>(`${this.URLBackEnd}/proyecto/editar/${proyecto_id}`,proyecto);
+  }
 }

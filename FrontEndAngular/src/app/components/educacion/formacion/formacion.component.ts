@@ -1,4 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Estudio } from 'src/app/models/estudio';
 import { EstudioService } from 'src/app/services/estudio.service';
 import { LoginUsuarioService } from 'src/app/services/loginUsuario.service';
 
@@ -9,6 +11,8 @@ import { LoginUsuarioService } from 'src/app/services/loginUsuario.service';
 })
 export class FormacionComponent implements OnInit {
 
+  @ViewChild('editFormEst') editFormEst!: NgForm;
+
   logueado:boolean = false;
 
   constructor(private loginUsaurio: LoginUsuarioService, private estudio: EstudioService) {}
@@ -17,7 +21,7 @@ export class FormacionComponent implements OnInit {
     this.logueado = this.loginUsaurio.valido;
   }
 
-  @Output() educacionEliminada: EventEmitter<void> = new EventEmitter<void>();
+  @Output() actualizarEstudio: EventEmitter<void> = new EventEmitter<void>();
 
   @Input() estudio_id:number = 0;
   @Input() nivel:string = "";
@@ -30,9 +34,28 @@ export class FormacionComponent implements OnInit {
     this.estudio.deleteEstudio(estudio_id).subscribe({
       next: () =>{
         document.getElementById('closeModalDeleteEst' + estudio_id )?.click()
-        this.educacionEliminada.emit();
+        this.actualizarEstudio.emit();
       }
     })
   }
   
+  public editEstudio (estudio_id:number): void{
+    if (this.editFormEst.valid) {
+      const editarEstudio: Estudio = {
+        "estudio_id": 0, //ojo con esta linea
+        "nivel": this.editFormEst.value.editarGrado,
+        "institucion": this.editFormEst.value.editarInstitucion,
+        "titulo": this.editFormEst.value.editarTitulo,
+        "estado": this.editFormEst.value.editarEstado,
+        "descripcion": this.editFormEst.value.editarDescripcionEducacion
+      };
+      this.estudio.updateEstudio(estudio_id, editarEstudio).subscribe(
+        (response) => {
+          this.editFormEst.reset();
+          document.getElementById('closeModalEditEst'+ estudio_id)?.click()
+          this.actualizarEstudio.emit();
+        }
+      );
+    }
+  }
 }

@@ -1,4 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Skill } from 'src/app/models/skill';
 import { LoginUsuarioService } from 'src/app/services/loginUsuario.service';
 import { SkillService } from 'src/app/services/skill.service';
 
@@ -9,6 +11,8 @@ import { SkillService } from 'src/app/services/skill.service';
 })
 export class HabilidadBlandaIndividualComponent implements OnInit {
 
+  @ViewChild('editFormSkillBlanda') editFormSkillBlanda!: NgForm;
+
   logueado:boolean = false;
 
   constructor(private loginUsaurio: LoginUsuarioService, private skill: SkillService) {}
@@ -17,7 +21,7 @@ export class HabilidadBlandaIndividualComponent implements OnInit {
     this.logueado = this.loginUsaurio.valido;
   }
 
-  @Output() skillEliminada: EventEmitter<void> = new EventEmitter<void>();
+  @Output() actualizarSkill: EventEmitter<void> = new EventEmitter<void>();
   
   @Input() skill_id:number = 0;
   @Input() tipo_habilidad:string = "";
@@ -28,8 +32,26 @@ export class HabilidadBlandaIndividualComponent implements OnInit {
     this.skill.deleteSkill(skill_id).subscribe({
       next: () =>{
         document.getElementById('closeModalDeleteSkillBlanda' + skill_id )?.click()
-        this.skillEliminada.emit();
+        this.actualizarSkill.emit();
       }
     })
+  }
+
+  public editSkillBlanda (skill_id:number): void{
+    if (this.editFormSkillBlanda.valid) {
+      const editarSkillBlanda: Skill = {
+        "skill_id": 0, //ojo con esta linea
+        "tipo_habilidad": "Habilidad Blanda",
+        "habilidad": this.editFormSkillBlanda.value.editarHabilidad,
+        "nivel": this.editFormSkillBlanda.value.nivelHabilidad
+      };
+      this.skill.updateSkill(skill_id, editarSkillBlanda).subscribe(
+        (response) => {
+          this.editFormSkillBlanda.reset();
+          document.getElementById('closeModalEditSkillBlanda'+ skill_id)?.click()
+          this.actualizarSkill.emit();
+        }
+      );
+    }
   }
 }

@@ -27,4 +27,9 @@ export class SkillService {
   public deleteSkill(skill_id: number): Observable<any>{
     return this.http.delete(`${this.URLBackEnd}/skill/borrar/${skill_id}`);
   }
+
+  // Este metodo no esta hecho para q se pueda modificar el tipo de habilidad, si es dura o blanda, mantiene el detalle de base
+  public updateSkill(skill_id: number, skill: Skill): Observable<Skill> {
+    return this.http.put<Skill>(`${this.URLBackEnd}/skill/editarcorta/${skill_id}`,skill);
+  }
 }

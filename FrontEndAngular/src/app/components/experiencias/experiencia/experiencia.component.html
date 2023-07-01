@@ -10,7 +10,7 @@
                         <h4 class="card-title">{{titulo}}</h4>
                     </div>
                     <div class="col-auto">
-                        <i class="uil uil-file-edit-alt" *ngIf="logueado" style="font-size: 1.8em; color: #0d94b9" data-bs-toggle="modal" data-bs-target="#editarExperiencia"></i>
+                        <i class="uil uil-file-edit-alt" *ngIf="logueado" style="font-size: 1.8em; color: #0d94b9" data-bs-toggle="modal" [attr.data-bs-target]="'#editarExperiencia' + experiencia_laboral_id"></i>
                         <i class="uil uil-trash-alt" *ngIf="logueado" style="font-size: 1.8em; color: #0d94b9" data-bs-toggle="modal" [attr.data-bs-target]="'#eliminarExperiencia' + experiencia_laboral_id"></i>
                     </div>
                 </div>
@@ -21,31 +21,31 @@
 </div>  
 
 <!-- Modal Editar Experiencia -->
-<div class="modal fade" id="editarExperiencia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" [attr.id]="'editarExperiencia' + experiencia_laboral_id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="modalEditarExperiencia">Editar Experiencia Laboral</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button [attr.id]="'closeModalEditExp' + experiencia_laboral_id" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form>
+                <form #editFormExp="ngForm" (ngSubmit)="editExperienciaLaboral(experiencia_laboral_id)">
                     <div class="m-4">
                         <label for="enlaceEditarExperienciaLaboral" class="form-label">Imagen Experiencia Laboral</label>
-                        <input class="form-control" id="enlaceEditarExperienciaLaboral" type="text" placeholder="Agrega el enlace de la imagen" aria-label="Enlace a tu nueva Foto">
+                        <input name="enlaceEditarExperienciaLaboral" ngModel="{{imagen}}" class="form-control" id="enlaceEditarExperienciaLaboral" type="text" placeholder="Agrega el enlace de la imagen" aria-label="Enlace a tu nueva Foto">
                     </div>
                     <div class="m-4">
                         <label for="editarTitulo" class="form-label">Titulo de la Experiencia Laboral</label>
-                        <input class="form-control" id="editarTitulo" type="text" aria-label="Titulo Experiencia Laboral">
+                        <input name="editarTitulo" ngModel="{{titulo}}" class="form-control" id="editarTitulo" type="text" aria-label="Titulo Experiencia Laboral">
                     </div>
                     <div class="m-4">
                         <label for="editarDescripcionE" class="form-label">Descripción de la Experiencia Laboral</label>
-                        <textarea class="form-control" id="editarDescripcionE" type="text" aria-label="Editar Descripcion de Experiencia" rows="5"></textarea>
+                        <textarea name="editarDescripcionE" ngModel="{{descripcion}}" class="form-control" id="editarDescripcionE" type="text" aria-label="Editar Descripcion de Experiencia" rows="5"></textarea>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Guardar</button>
+                <button (click)="editExperienciaLaboral(experiencia_laboral_id)" type="submit" class="btn btn-primary">Guardar</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancerlar</button>
             </div>
         </div>

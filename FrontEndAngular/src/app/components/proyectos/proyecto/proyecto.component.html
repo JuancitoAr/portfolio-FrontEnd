@@ -6,7 +6,7 @@
                 <h6>{{fecha_inicio}}</h6>
             </div>
             <div class="col-auto">
-                <i class="uil uil-file-edit-alt" *ngIf="logueado" style="font-size: 1.8em;color: #0d94b9" data-bs-toggle="modal" data-bs-target="#editarProyecto"></i>
+                <i class="uil uil-file-edit-alt" *ngIf="logueado" style="font-size: 1.8em;color: #0d94b9" data-bs-toggle="modal" [attr.data-bs-target]="'#editarProyecto' + proyecto_id "></i>
                 <i class="uil uil-trash-alt" *ngIf="logueado" style="font-size: 1.8em; color: #0d94b9" data-bs-toggle="modal" [attr.data-bs-target]="'#eliminarProyecto' + proyecto_id "></i>
             </div>
         </div>
@@ -18,40 +18,40 @@
 </div>
 
 <!-- Modal Editar Proyecto -->
-<div class="modal fade" id="editarProyecto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" [attr.id]="'editarProyecto' + proyecto_id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="modalEditarProyecto">Editar Proyecto</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button [attr.id]="'closeModalEditProyecto' + proyecto_id" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form>
+                <form #editFormProyecto="ngForm" (ngSubmit)="editProyecto(proyecto_id)">
                     <div class="m-3">
                         <label for="editarTituloProyecto" class="form-label">Titulo del Proyecto</label>
-                        <input class="form-control" id="editarTituloProyecto" type="text" aria-label="Editar Titulo Proyecto">
+                        <input name="editarTituloProyecto" ngModel="{{titulo}}" class="form-control" id="editarTituloProyecto" type="text" aria-label="Editar Titulo Proyecto">
                     </div>
                     <div class="m-3">
                         <label for="editarFecha" class="form-label">Año de Inicio</label>
-                        <input class="form-control" id="editarFecha" type="text" aria-label="Año de Inicio">
+                        <input name="editarFecha" ngModel="{{fecha_inicio}}" class="form-control" id="editarFecha" type="text" aria-label="Año de Inicio">
                     </div>
                     <div class="m-3">
                         <label for="editarDescripcionP" class="form-label">Descripción del Proyecto</label>
-                        <textarea class="form-control" id="editarDescripcionP" type="text" aria-label="Editar Descripcion de Proyecto" rows="5"></textarea>
+                        <textarea name="editarDescripcionP" ngModel="{{descripcion}}" class="form-control" id="editarDescripcionP" type="text" aria-label="Editar Descripcion de Proyecto" rows="5"></textarea>
                     </div>
                     <div class="m-3">
                         <label for="editarEnlaceP" class="form-label">Enlace</label>
-                        <input class="form-control" id="editarEnlaceP" type="text" aria-label="Enlace">
+                        <input name="editarEnlaceP" ngModel="{{link}}" class="form-control" id="editarEnlaceP" type="text" aria-label="Enlace">
                     </div>
                     <div class="m-3">
                         <label for="editarTextoEnlaceP" class="form-label">Texto del Enlace</label>
-                        <input class="form-control" id="editarTextoEnlaceP" type="text" aria-label="Mascara Enlace">
+                        <input name="editarTextoEnlaceP" ngModel="{{mascara}}" class="form-control" id="editarTextoEnlaceP" type="text" aria-label="Mascara Enlace">
                         <div class="form-text">Usaremos este texto para enmascarar el enlace</div>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Guardar</button>
+                <button (click)="editProyecto(proyecto_id)" type="submit" class="btn btn-primary">Guardar</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancerlar</button>
             </div>
         </div>

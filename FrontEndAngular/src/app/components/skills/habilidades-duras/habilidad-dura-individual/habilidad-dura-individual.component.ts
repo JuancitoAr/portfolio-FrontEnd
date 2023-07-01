@@ -1,4 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Skill } from 'src/app/models/skill';
 import { LoginUsuarioService } from 'src/app/services/loginUsuario.service';
 import { SkillService } from 'src/app/services/skill.service';
 
@@ -9,6 +11,8 @@ import { SkillService } from 'src/app/services/skill.service';
 })
 export class HabilidadDuraIndividualComponent implements OnInit {
 
+  @ViewChild('editFormSkillDura') editFormSkillDura!: NgForm;
+
   logueado:boolean = false;
 
   constructor(private loginUsaurio: LoginUsuarioService, private skill: SkillService) {}
@@ -17,7 +21,7 @@ export class HabilidadDuraIndividualComponent implements OnInit {
     this.logueado = this.loginUsaurio.valido;
   }
 
-  @Output() skillEliminada: EventEmitter<void> = new EventEmitter<void>();
+  @Output() actualizarSkill: EventEmitter<void> = new EventEmitter<void>();
   
   @Input() skill_id:number = 0;
   @Input() tipo_habilidad:string = "";
@@ -28,8 +32,26 @@ export class HabilidadDuraIndividualComponent implements OnInit {
     this.skill.deleteSkill(skill_id).subscribe({
       next: () =>{
         document.getElementById('closeModalDeleteSkillDura' + skill_id )?.click()
-        this.skillEliminada.emit();
+        this.actualizarSkill.emit();
       }
     })
+  }
+
+  public editSkillDura (skill_id:number): void{
+    if (this.editFormSkillDura.valid) {
+      const editarSkillDura: Skill = {
+        "skill_id": 0, //ojo con esta linea
+        "tipo_habilidad": "Habilidad Dura",
+        "habilidad": this.editFormSkillDura.value.editarHabilidad,
+        "nivel": this.editFormSkillDura.value.nivelHabilidad
+      };
+      this.skill.updateSkill(skill_id, editarSkillDura).subscribe(
+        (response) => {
+          this.editFormSkillDura.reset();
+          document.getElementById('closeModalEditSkillDura'+ skill_id)?.click()
+          this.actualizarSkill.emit();
+        }
+      );
+    }
   }
 }
