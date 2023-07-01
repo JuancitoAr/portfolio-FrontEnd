@@ -2,57 +2,28 @@
     <div class="accordion" id="accordionExample">
         <div class="accordion-item">
             <h2 class="accordion-header">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    <div class="col">Educación de Nivel Medio</div> 
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse' + estudio_id" aria-expanded="true" aria-controls="collapseOne">
+                    <div class="col">{{nivel}}</div> 
                     <div class="col-auto pe-3">
-                        <i class="uil uil-file-edit-alt" style="font-size: 1.8em; color: #0d94b9" data-bs-toggle="modal" data-bs-target="#editarEducacion"></i>
-                        <i class="uil uil-trash-alt" style="font-size: 1.8em; color: #0d94b9" data-bs-toggle="modal" data-bs-target="#eliminarEducacion"></i>
+                        <i class="uil uil-file-edit-alt" *ngIf="logueado" style="font-size: 1.8em; color: #0d94b9" data-bs-toggle="modal" [attr.data-bs-target]="'#editarEducacion' + estudio_id"></i>
+                        <i class="uil uil-trash-alt" *ngIf="logueado" style="font-size: 1.8em; color: #0d94b9" data-bs-toggle="modal" [attr.data-bs-target]="'#eliminarEducacion' + estudio_id"></i>
                     </div>       
                 </button>
             </h2>
-            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+            <div [attr.id]="'collapse' + estudio_id" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
                     <div class="row">
                         <div class="col-4">
                             <h3>Institución</h3>
-                            <h5>Escuela de Comercio N° 1</h5><hr>
+                            <h5>{{institucion}}</h5><hr>
                             <h4>Titulo</h4>
-                            <h5>Perito Mercantil y Mecanografo</h5><hr>
+                            <h5>{{titulo}}</h5><hr>
                             <p>Estado</p>
-                            <p><strong>Conluido</strong></p>
+                            <p><strong>{{estado}}</strong></p>
                         </div>
                         <div class="col">
                             <h4>Descripción</h4>
-                            <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="accordion-item">
-            <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    <div class="col">Educación de Nivel Superior</div>
-                    <div class="col-auto pe-3">
-                        <i class="uil uil-file-edit-alt" style="font-size: 1.8em; color: #0d94b9" data-bs-toggle="modal" data-bs-target="#editarEducacion"></i>
-                        <i class="uil uil-trash-alt" style="font-size: 1.8em; color: #0d94b9" data-bs-toggle="modal" data-bs-target="#eliminarEducacion"></i>
-                    </div>
-                </button>
-            </h2>
-            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                <div class="accordion-body">
-                    <div class="row">
-                        <div class="col-4">
-                            <h3>Institución</h3>
-                            <h5>Facultad de Ingenieria Quimica - UNL</h5><hr>
-                            <h4>Titulo</h4>
-                            <h5>Ingeniero Quimico</h5><hr>
-                            <p>Estado</p>
-                            <p><strong>En Curso</strong></p>
-                        </div>
-                        <div class="col">
-                            <h4>Descripción</h4>
-                            <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                            {{descripcion}}
                         </div>
                     </div>
                 </div>
@@ -62,39 +33,39 @@
 </div>
 
 <!-- Modal Editar Educación -->
-<div class="modal fade" id="editarEducacion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" [attr.id]="'editarEducacion' + estudio_id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="modalAgregarEducacion">Editar Formación, Educación o Certificación</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button [attr.id]="'closeModalEditEst' + estudio_id" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form>
+                <form #editFormEst="ngForm" (ngSubmit)="editEstudio(estudio_id)">
                     <div class="m-4">
                         <label for="editarGrado" class="form-label">Nivel - Grado - Certificacíon</label>
-                        <input class="form-control" id="editarGrado" type="text" placeholder="Agrega aqui el texto que engloba y oculta lo que quieres mostrar" aria-label="Grado Educativo">
+                        <input name="editarGrado" ngModel="{{nivel}}" class="form-control" id="editarGrado" type="text" placeholder="Agrega aqui el texto que engloba y oculta lo que quieres mostrar" aria-label="Grado Educativo">
                     </div>
                     <div class="m-4">
                         <label for="editarInstitucion" class="form-label">Institución</label>
-                        <input class="form-control" id="editarInstitucion" type="text" aria-label="Institucion Educativa">
+                        <input name="editarInstitucion" ngModel="{{institucion}}" class="form-control" id="editarInstitucion" type="text" aria-label="Institucion Educativa">
                     </div>
                     <div class="m-4">
                         <label for="editarTitulo" class="form-label">Titulo</label>
-                        <input class="form-control" id="editarTitulo" type="text" aria-label="Titulo">
+                        <input name="editarTitulo" ngModel="{{titulo}}" class="form-control" id="editarTitulo" type="text" aria-label="Titulo">
                     </div>
                     <div class="m-4">
                         <label for="editarEstado" class="form-label">Estado</label>
-                        <input class="form-control" id="editarEstado" type="text" aria-label="Estado alcanzado">
+                        <input name="editarEstado" ngModel="{{estado}}" class="form-control" id="editarEstado" type="text" aria-label="Estado alcanzado">
                     </div>
                     <div class="m-4">
                         <label for="editarDescripcionEducacion" class="form-label">Descripción asociada</label>
-                        <textarea class="form-control" id="editarDescripcionEducacion" type="text" aria-label="Nueva Descripcion de Educacion" rows="5"></textarea>
+                        <textarea name="editarDescripcionEducacion" ngModel="{{descripcion}}" class="form-control" id="editarDescripcionEducacion" type="text" aria-label="Nueva Descripcion de Educacion" rows="5"></textarea>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Guardar</button>
+                <button (click)="editEstudio(estudio_id)" type="submit" class="btn btn-primary">Guardar</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancerlar</button>
             </div>
         </div>
@@ -102,22 +73,22 @@
 </div>
 
 <!-- Modal Eliminar Educacion -->
-<div class="modal fade" id="eliminarEducacion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" [attr.id]="'eliminarEducacion' + estudio_id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="modalEliminarEducacion">Eliminar esta Educación</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button [attr.id]="'closeModalDeleteEst' + estudio_id " type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form>
                     <div class="m-4">
-                        Estas a punto de <strong>Eliminar</strong> este detalle en tu Educación!!! Estas Seguro?
+                        Estas a punto de <strong>Eliminar</strong> la formación que responde al titulo de {{titulo}} y toda su información!!! Estas Seguro?
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger">Aceptar</button>
+                <button (click)="deleteEstudio(estudio_id)" type="button" class="btn btn-danger">Aceptar</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancerlar</button>
             </div>
         </div>

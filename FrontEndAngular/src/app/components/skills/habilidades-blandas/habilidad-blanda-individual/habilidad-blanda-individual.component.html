@@ -1,149 +1,41 @@
 <div class="row mb-1">
-    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 align-self-center mb-1">
-        <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="height: 30px">
-            <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" style="width: 90%">
+    <div class="col align-self-center mb-1">
+        <div class="progress" role="progressbar" aria-label="Animated striped example" [attr.aria-valuenow]="nivel" aria-valuemin="0" aria-valuemax="100" style="height: 30px">
+            <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" [attr.style]="'width:' + nivel + '%'">
                 <div class="row align-items-center">
-                    <div class="col">
-                        Comunicación Efectiva
-                    </div>
+                    <div class="col">{{habilidad}}</div>
                     <div class="col-auto">
-                        <i class="uil uil-file-edit-alt" style="font-size: 1.5em;" data-bs-toggle="modal" data-bs-target="#editarEstaHabilidad"></i>
-                        <i class="uil uil-trash-alt" style="font-size: 1.5em;" data-bs-toggle="modal" data-bs-target="#eliminarEstaHabilidad"></i>
+                        <i class="uil uil-file-edit-alt" *ngIf="logueado" style="font-size: 1.5em;" data-bs-toggle="modal" [attr.data-bs-target]="'#editarEstaHabilidadBlanda' + skill_id"></i>
+                        <i class="uil uil-trash-alt" *ngIf="logueado" style="font-size: 1.5em;" data-bs-toggle="modal" [attr.data-bs-target]="'#eliminarEstaHabilidadBlanda' + skill_id"></i>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 align-self-center mb-1">
-        <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="97" aria-valuemin="0" aria-valuemax="100" style="height: 30px">
-            <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" style="width: 97%">
-                <div class="row align-items-center">
-                    <div class="col">
-                        Pensamiento Critico
-                    </div>
-                    <div class="col-auto">
-                        <i class="uil uil-file-edit-alt" style="font-size: 1.5em;" data-bs-toggle="modal" data-bs-target="#editarEstaHabilidad"></i>
-                        <i class="uil uil-trash-alt" style="font-size: 1.5em;" data-bs-toggle="modal" data-bs-target="#eliminarEstaHabilidad"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 align-self-center mb-1">
-        <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="height: 30px">
-            <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" style="width: 90%">
-                <div class="row align-items-center">
-                    <div class="col">
-                        Trabajo en equipo
-                    </div>
-                    <div class="col-auto">
-                        <i class="uil uil-file-edit-alt" style="font-size: 1.5em;" data-bs-toggle="modal" data-bs-target="#editarEstaHabilidad"></i>
-                        <i class="uil uil-trash-alt" style="font-size: 1.5em;" data-bs-toggle="modal" data-bs-target="#eliminarEstaHabilidad"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 align-self-center mb-1">
-        <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="height: 30px">
-            <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" style="width: 95%">
-                <div class="row align-items-center">
-                    <div class="col">
-                        Adaptabilidad
-                    </div>
-                    <div class="col-auto">
-                        <i class="uil uil-file-edit-alt" style="font-size: 1.5em;" data-bs-toggle="modal" data-bs-target="#editarEstaHabilidad"></i>
-                        <i class="uil uil-trash-alt" style="font-size: 1.5em;" data-bs-toggle="modal" data-bs-target="#eliminarEstaHabilidad"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 align-self-center mb-1">
-        <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="height: 30px">
-            <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" style="width: 60%">
-                <div class="row align-items-center">
-                    <div class="col">
-                        Creatibidad
-                    </div>
-                    <div class="col-auto">
-                        <i class="uil uil-file-edit-alt" style="font-size: 1.5em;" data-bs-toggle="modal" data-bs-target="#editarEstaHabilidad"></i>
-                        <i class="uil uil-trash-alt" style="font-size: 1.5em;" data-bs-toggle="modal" data-bs-target="#eliminarEstaHabilidad"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 align-self-center mb-1">
-        <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="height: 30px">
-            <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" style="width: 60%">
-                <div class="row align-items-center">
-                    <div class="col">
-                        Resolución de conflictos
-                    </div>
-                    <div class="col-auto">
-                        <i class="uil uil-file-edit-alt" style="font-size: 1.5em;" data-bs-toggle="modal" data-bs-target="#editarEstaHabilidad"></i>
-                        <i class="uil uil-trash-alt" style="font-size: 1.5em;" data-bs-toggle="modal" data-bs-target="#eliminarEstaHabilidad"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 align-self-center mb-1">
-        <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="height: 30px">
-            <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" style="width: 50%">
-                <div class="row align-items-center">
-                    <div class="col">
-                        Gestión del tiempo
-                    </div>
-                    <div class="col-auto">
-                        <i class="uil uil-file-edit-alt" style="font-size: 1.5em;" data-bs-toggle="modal" data-bs-target="#editarEstaHabilidad"></i>
-                        <i class="uil uil-trash-alt" style="font-size: 1.5em;" data-bs-toggle="modal" data-bs-target="#eliminarEstaHabilidad"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 align-self-center mb-1">
-        <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="height: 30px">
-            <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" style="width: 95%">
-                <div class="row align-items-center">
-                    <div class="col">
-                        Empatía
-                    </div>
-                    <div class="col-auto">
-                        <i class="uil uil-file-edit-alt" style="font-size: 1.5em;" data-bs-toggle="modal" data-bs-target="#editarEstaHabilidad"></i>
-                        <i class="uil uil-trash-alt" style="font-size: 1.5em;" data-bs-toggle="modal" data-bs-target="#eliminarEstaHabilidad"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
+    
 <!-- Modal Editar Habilidad -->
-<div class="modal fade" id="editarEstaHabilidad" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" [attr.id]="'editarEstaHabilidadBlanda' + skill_id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="modalEditarHabilida">Editar esta Habilidad</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button [attr.id]="'closeModalEditSkillBlanda' + skill_id" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form>
+                <form #editFormSkillBlanda="ngForm" (ngSubmit)="editSkillBlanda(skill_id)">
                     <div class="m-4">
                         <label for="editarHabilidad" class="form-label">Habilidad</label>
-                        <input class="form-control" id="editarHabilidad" type="text" aria-label="Habiliadad">
+                        <input name="editarHabilidad" ngModel="{{habilidad}}" class="form-control" id="editarHabilidad" type="text" aria-label="Habiliadad">
                     </div>
                     <div class="m-4">
                         <label for="nivelHabilidad" class="form-label">Nivel alcanzado</label>
-                        <input class="form-control" id="nivelHabilidad" type="text" aria-label="Nivel de la habilidad">
+                        <input name="nivelHabilidad" ngModel="{{nivel}}" class="form-control" id="nivelHabilidad" type="text" aria-label="Nivel de la habilidad">
                         <div class="form-text">Ingrese solo el valor numerico</div>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Guardar</button>
+                <button (click)="editSkillBlanda(skill_id)" type="submit" class="btn btn-primary">Guardar</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancerlar</button>
             </div>
         </div>
@@ -151,22 +43,22 @@
 </div>
 
 <!-- Modal Eliminar Habilidad -->
-<div class="modal fade" id="eliminarEstaHabilidad" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" [attr.id]="'eliminarEstaHabilidadBlanda' + skill_id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="modalEliminarHabilidad">Eliminar esta Habilidad</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button [attr.id]="'closeModalDeleteSkillBlanda' + skill_id" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form>
                     <div class="m-4">
-                        Estas a punto de <strong>Eliminar</strong> esta Habilidad!!! Estas Seguro?
+                        Estas a punto de <strong>Eliminar</strong> {{habilidad}} y toda su información!!! Estas Seguro?
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger">Aceptar</button>
+                <button (click)="deleteSkill(skill_id)" type="button" class="btn btn-danger">Aceptar</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancerlar</button>
             </div>
         </div>

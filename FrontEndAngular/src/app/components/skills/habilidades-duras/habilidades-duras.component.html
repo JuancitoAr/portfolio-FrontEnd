@@ -2,11 +2,19 @@
     <div class="col text-center">
         <h3>Habilidades Duras</h3>
     </div>
-    <div class="col-auto">
+    <div *ngIf="logueado" class="col-auto">
         <i class="uil uil-file-plus-alt" style="font-size: 1.8em; color: #0d94b9" data-bs-toggle="modal" data-bs-target="#agregarHabilidadDura"></i>
     </div>
 </div>
-<app-habilidad-dura-individual></app-habilidad-dura-individual>
+<div *ngFor="let skillDura of skillsDuras">
+    <app-habilidad-dura-individual
+    [skill_id]="skillDura.skill_id"
+    tipo_habilidad="{{skillDura.tipo_habilidad}}"
+    habilidad="{{skillDura.habilidad}}"
+    nivel="{{skillDura.nivel}}"
+    (actualizarSkill)="getSkillDura()"
+    ></app-habilidad-dura-individual>
+</div>
 
 <!-- Modal Agregar Habilidad Dura -->
 <div class="modal fade" id="agregarHabilidadDura" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -14,27 +22,27 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="modalAgregarHabilidaDura">Nueva Habilidad</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button id="closeModalAddSkillDura" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form>
+                <form #addFormSkillDura="ngForm" (ngSubmit)="onSubmitAddSkillDura(addFormSkillDura)">
                     <div class="m-4">
                         <label for="habilidadDura" class="form-label">Tipo de Habilidad</label>
-                        <input class="form-control" id="habilidadDura" type="text" aria-label="Habiliadad Dura" value="Habilidad Dura" disabled style="opacity: 0.8; color: #888;">
+                        <input name="habilidadDura" class="form-control" id="habilidadDura" type="text" aria-label="Habiliadad Dura" value="Habilidad Dura" disabled style="opacity: 0.8; color: #888;">
                     </div>
                     <div class="m-4">
                         <label for="nuevaHabilidadDura" class="form-label">Habilidad</label>
-                        <input class="form-control" id="nuevaHabilidadDura" type="text" placeholder="Por ejemplo: Html" aria-label="Habiliadad Dura">
+                        <input name="nuevaHabilidadDura" class="form-control" id="nuevaHabilidadDura" type="text" placeholder="Por ejemplo: Html" aria-label="Habiliadad Dura">
                     </div>
                     <div class="m-4">
                         <label for="nivelHabilidadDura" class="form-label">Nivel alcanzado</label>
-                        <input class="form-control" id="nivelHabilidadDura" type="text" aria-label="Nivel de la habilidad">
+                        <input name="nivelHabilidadDura" class="form-control" id="nivelHabilidadDura" type="text" aria-label="Nivel de la habilidad">
                         <div class="form-text">Ingrese solo el valor numerico</div>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Guardar</button>
+                <button (click)="onSubmitAddSkillDura(addFormSkillDura)" type="button" class="btn btn-primary">Guardar</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancerlar</button>
             </div>
         </div>

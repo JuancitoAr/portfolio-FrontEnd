@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AutenticacionService } from 'src/app/services/autenticacion.service';
+import { LoginUsuario } from 'src/app/models/loginUsuario';
+import { LoginUsuarioService } from 'src/app/services/loginUsuario.service';
 
 @Component({
   selector: 'app-login',
@@ -9,35 +10,68 @@ import { AutenticacionService } from 'src/app/services/autenticacion.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  form:FormGroup;
 
-  constructor(
-    private formBuilder:FormBuilder, 
-    private authService: AutenticacionService,  
-    private router: Router   
-    ) {
-    this.form=this.formBuilder.group(
-      {
-        email:['',[Validators.required,Validators.email]],
-        password:['',[Validators.required, Validators.minLength(6)]],
-      }
-    )
-  }
+  formSubmit = false;
+  valido = false;
+  errorAcceso = false;
+  accesoCorrecto = false;
+  usuario: LoginUsuario | undefined;
+
+  form = this.formBuilder.group({
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.minLength(6)]],
+  })
+
+
+  constructor(private loginUsuario: LoginUsuarioService, private formBuilder: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
-    this.authService.logout();
+    this.valido = false;
+    this.errorAcceso = false;
+    this.accesoCorrecto = false;
+    this.getAdmin();
   }
 
-  onSubmit(event: Event){
-    event.preventDefault();
-    const isAuthenticated = this.authService.authenticate(this.form.value);
-    if (isAuthenticated) {
-      this.router.navigate(['/portfolio']);
-    } else {
-      alert('Acceso inválido. Por favor, inténtelo otra vez.');
+  public getAdmin(): void {
+    this.loginUsuario.getLoginUsuario().subscribe({
+      next: (response: LoginUsuario) => {
+        this.usuario = response;
+      }
+    })
+  }
+
+  onSubmit() {
+    this.formSubmit = true;
+    if (this.usuario?.email == this.form.value.email && this.usuario?.password == this.form.value.password) {
+      this.loginUsuario.valido = true;
+      this.correcto();
+    }
+    else if (this.form.value.email == "" && this.form.value.password == "") {
+      this.form.markAllAsTouched();
+    }
+    else {
+      this.error();
     }
   }
 
+  error() {
+    this.errorAcceso = true;
+    setTimeout(() => {
+      this.errorAcceso = false;
+    }, 2500);
+    this.form.reset();
+  }
+
+  correcto() {
+    this.accesoCorrecto = true;
+    setTimeout(() => {
+      this.accesoCorrecto = false;
+      this.router.navigate(['/portfolio']);
+    }, 3500);
+  }
+
+
+  // Estos metodos se crean para obtener la info del formulario y aplicar las validaciones
   get Email() {
     return this.form.get('email');
   }

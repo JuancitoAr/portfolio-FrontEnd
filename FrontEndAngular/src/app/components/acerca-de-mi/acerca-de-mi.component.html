@@ -1,11 +1,13 @@
 <section class="container">
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 col-xxl-3 acerca text-center"> 
-            <img src="../assets/imagenes/Log_AP.jpg"> 
+            <img src="{{usuario?.foto}}"> 
                 <div>
-                    <h1 id="nombre">Juan Gabriel Arredondo</h1>
-                    <h2 id="titulo">Full Stack Developer Jr.</h2>
-                    <i class="uil uil-file-edit-alt" style="font-size: 1.8em; color: #0d94b9" data-bs-toggle="modal" data-bs-target="#perfil"></i>
+                    <h1 id="nombree">{{usuario?.nombre}} {{usuario?.apellido}}</h1>
+                    <h2 id="tituloo">{{usuario?.titulo}}</h2>
+                    <a *ngIf="logueado" data-bs-toggle="modal" data-bs-target="#perfil">
+                        <i  class="uil uil-file-edit-alt" style="font-size: 1.8em; color: #0d94b9"></i>
+                    </a>
                 </div> 
         </div>  
         <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9 col-xl-9 col-xxl-9 pt-3"> 
@@ -13,69 +15,69 @@
                 <div class="col">
                     <h2 class="text-center color-titulo">Acerca de mi</h2>
                 </div>
-                <div class="col-auto">
+                <div class="col-auto" *ngIf="logueado">
                     <i class="uil uil-file-edit-alt" style="font-size: 2.5em; color: #0d94b9" data-bs-toggle="modal" data-bs-target="#acercaDeMi"></i>
                 </div>
             </div>
-            <p>Soy un estudiante avanzado de Ingenieria Quimica. Actualmente trabajo para el Estado Provincial Entrerriano, 
-                desempeñandome como encargado y responsable del área de Informatica y Sistemas.</p>
-            <p>Soy una persona responsable y sumamente comprometida con el trabajo, apasionado por el desarrollo e implementación
-                de sistemas y herramientas que permitan facilitar y agilizar las tareas diarias como así tambien lograr un 
-                servicio más eficiente.</p>            
+            <p>{{usuario?.descripcion}}</p> 
         </div>
     </div>
 </section>
 
 <!-- Modal Perfil -->
-<div class="modal fade" id="perfil" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="perfil" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" #perfilModal>
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="modalPerfil">Editar Perfil</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button id="closeModalPerfil" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
             <form>
-                <div class="m-4">
-                    <label for="enlaceNuevaFoto" class="form-label">Enlace de tu Foto</label>
-                    <input class="form-control" id="enlaceNuevaFoto" type="text" aria-label="Enlace a tu nueva Foto">
+                <div class="form-group m-4">
+                    <label for="foto" class="form-label">Enlace de tu Foto</label>
+                    <input name="foto" ngModel="{{usuario?.foto}}" class="form-control" id="foto" type="text" aria-label="Enlace a tu nueva Foto" required>
                 </div>
-                <div class="m-4">
-                    <label for="nuevoNombre_Apellido" class="form-label">Nombre y Apellido</label>
-                    <input class="form-control" id="nuevoNombre_Apellido" type="text" aria-label="Nombre y Apellido">
+                <div class="form-group m-4">
+                    <label for="apellido" class="form-label">Apellido</label>
+                    <input name="apellido" ngModel="{{usuario?.apellido}}" class="form-control" id="apellido" type="text" aria-label="Apellido" required>
                 </div>
-                <div class="m-4">
-                    <label for="nuevoTitulo" class="form-label">Titulo</label>
-                    <input class="form-control" id="nuevoTitulo" type="text" aria-label="Titulo">
+                <div class="form-group m-4">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input name="nombre" ngModel="{{usuario?.nombre}}" class="form-control" id="nombre" type="text" aria-label="Nombre" required>
+                </div>
+                <div class="form-group m-4">
+                    <label for="titulo" class="form-label">Titulo</label>
+                    <input name="titulo" ngModel="{{usuario?.titulo}}" class="form-control" id="titulo" type="text" aria-label="Titulo" required>
                 </div>
             </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary">Guardar</button>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancerlar</button>
+          <button (click)="onSubmitPerfil()" type="submit" class="btn btn-primary">Guardar</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
         </div>
       </div>
     </div>
 </div>
 
 <!-- Modal Acerca de Mi -->
-<div class="modal fade" id="acercaDeMi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="acercaDeMi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" #acercaModal>
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="modalAcercaDeMi">Editar Acerca de Mi</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button id="closeModalAcerca" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
             <form>
-                <div class="m-4">
-                    <label for="nuevaDescripcionAdM" class="form-label">Editar descripción</label>
-                    <textarea class="form-control" id="nuevaDescripcionAdM" type="text" aria-label="Nueva Descripcion sobre ti" rows="5"></textarea>
+                <div class="form-group m-4">
+                    <label for="descripcion" class="form-label">Editar descripción</label>
+                    <textarea name="descripcion" ngModel="{{usuario?.descripcion}}" class="form-control" id="descripcion" type="text" aria-label="Nueva Descripcion sobre ti" rows="5"></textarea>
                 </div>
             </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary">Guardar</button>
+          <button (click)="onSubmitAcerca()" type="submit" class="btn btn-primary">Guardar</button>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancerlar</button>
         </div>
       </div>

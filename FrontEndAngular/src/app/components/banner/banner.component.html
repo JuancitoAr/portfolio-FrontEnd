@@ -10,18 +10,19 @@
                         <i class="uil uil-github" style="font-size: 3em; color: #D4D4D4"></i>
                     </a>
                 </li>
-                <li class="list-group-item">
-                    <button class="button" routerLink="/login">Login</button>
+                <li *ngIf="!logueado" class="list-group-item">
+                    <button class="button" (click)="loguin()">Login</button>
                 </li>
-                <li class="list-group-item">
-                    <button class="button">Logout</button>
+                <li *ngIf="logueado" class="list-group-item">
+                    <button class="button" (click)="logout()">Logout</button>
                 </li>
             </ul>
         </nav>
     </header> 
-    <div class="row">
+    <!-- Futura funcionalidad. Editar imagen del banner
+    <div *ngIf="logueado" class="row">
         <i class="uil uil-image-edit row align-items-center justify-content-center" style="font-size: 3.6em; height: 60vh; color: #fff" data-bs-toggle="modal" data-bs-target="#banner"></i>
-    </div>
+    </div> -->
 </section>
 
 <!-- Modal Banner -->
